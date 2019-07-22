@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-数组排序.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [1,2,4,3];
+	function mode(arr){
+		for(var i = 0;i<arr.length;i++){
+			var temp = 0;
+			if(arr[i+1]<arr[i]){
+				temp = arr[i];
+				arr[i] = arr[i+1];
+				arr[i+1] = temp;
+			}
+		}
+		return arr;
+	}
+	var newarr = mode(arr);
+	console.log(newarr);
+</script>
+</html>

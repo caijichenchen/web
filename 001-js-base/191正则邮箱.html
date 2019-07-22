@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则邮箱</title>
+</head>
+<body>
+	<textarea name="" id="txt" cols="30" rows="2"></textarea>
+	<button id="btn">检测</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oTxt = document.getElementById('txt');
+
+	oBtn.onclick = function(){
+		var iVal = oTxt.value;
+		var reg1 = /\d{6,11}@[a-z]{2,5}\.com$/;//qq
+		var reg2 = /[a-zA-Z]\w{6,11}@[a-z]{2,5}\.com$/;//其他
+
+		if(reg1.test(iVal) || reg2.test(iVal)){
+			alert("合法");
+		}else{
+			alert("不合法");
+		}
+	}
+</script>
+</html>

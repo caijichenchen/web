@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>155共同事件类型.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			background-color: #ccc;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+
+	function change(ev){
+		if(ev.type == 'click'){
+			oBox.style.backgroundColor = '#f69';
+		}else if(ev.type == 'mouseover'){
+			oBox.style.backgroundColor = '#f65';
+		}
+	}
+
+
+	oBox.onclick = change;
+	oBox.onmouseover = change;
+</script>
+</html>

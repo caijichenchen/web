@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027-jquery是否阻止默认行为.html</title>
+</head>
+<body>
+	<form action="http://www.baidu.com">
+		<input type="text" name="text1">
+		<input type="submit" name="text2" value="跳转">
+	</form>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('input').eq(1).click(function(){
+			alert('sub click');
+		})
+		// $('input').eq(1).trigger('click');
+		$('input').eq(1).triggerHandler('click');
+	})
+</script>
+</html>

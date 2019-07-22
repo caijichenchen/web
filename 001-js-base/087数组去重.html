@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>087数组去重.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [1,1,5,8,6,5];
+	
+	function change(arr){
+		var result = [];
+		for(var i = 0;i < arr.length;i++){
+			var iarr = false;
+			for(var j = i+1;j <arr.length;j++){
+				if(arr[i] == arr[j]){
+					iarr = true;
+					break;
+				}
+			}
+			if(!iarr){
+				result.push(arr[i]);
+			}
+		}
+		return result;
+	}
+	var newArr = change(arr);
+	console.log(newArr);
+</script>
+</html>

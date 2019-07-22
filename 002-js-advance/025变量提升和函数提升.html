@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>025变量提升和函数提升.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*先执行变量提升还是先执行函数提升
+		* 先进行变量提升再进行函数提升
+	*/
+	function a(){
+
+	}
+	var a;
+	console.log(typeof a);//输出function
+
+	if(!(b in window)){
+		var b = 1;
+	}
+	console.log(b);//undefined
+
+	var c = 1;
+	function c(c){
+		console.log(c);
+	}
+	c(2);//报错
+</script>
+</html>

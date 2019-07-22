@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-jquery阻止事件冒泡.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.gf{
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+			margin: 100px auto;
+		}
+		.f{
+			width: 200px;
+			height: 200px;
+			background-color: #f69;
+			margin: 100px auto;
+			overflow: hidden;
+		}
+		.s{
+			width: 100px;
+			height: 100px;
+			background-color: #ccc;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="gf">
+		<div class="f">
+			<div class="s"></div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('.gf').click(function(){
+			alert('gf click');
+		})
+		$('.f').click(function(){
+			alert('f click');
+			return false;
+		})
+		$('.s').click(function(ev){
+			alert('s click');
+			ev.stopPropagation();
+		})
+
+	})
+</script>
+</html>

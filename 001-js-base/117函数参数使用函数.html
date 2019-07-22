@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数参数使用</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function showNum(n1,n2,fn){
+		var result = n1 + n2;
+		fn(result);
+	}
+	showNum(1,2,function(name){
+		console.log(name);
+	})
+</script>
+</html>

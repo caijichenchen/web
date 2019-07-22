@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014定义多个属性.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Objectt(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Objectt.prototype.sayName = function(){
+		console.log("i am "+this.name);
+	}
+	Objectt.prototype.LED = 2;
+
+	var obj1 = new Objectt("tom",18);
+	var obj2 = new Objectt("leo",20);
+
+	// console.log(delete Object.LED);
+
+	Object.defineProperties(obj1,{
+		HAND:{
+			value:1,
+			enumerable:false,
+			writable:false,
+			configurable:false
+		},
+		leg:{
+			value:2,
+			enumerable:true,
+			writable:false,
+			configurable:true
+		}
+	})
+
+	console.log(obj1);
+	for(attr in obj1){
+		console.log(attr,obj1[attr]);
+	}
+</script>
+</html>

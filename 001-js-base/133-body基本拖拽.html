@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>133-body基本拖拽.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: #f69;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+
+	oBox.onmousedown = function(ev){
+		var iLeft = ev.clientX - oBox.offsetLeft;
+		var iTop = ev.clientY - oBox.offsetTop;
+
+		document.body.onmousemove = function(ev){
+			oBox.style.left = ev.clientX - iLeft + 'px';
+			oBox.style.top = ev.clientY - iTop + 'px';
+		}
+		document.body.onmouseup = function(){
+			document.body.onmousemove = null;
+			document.body.onmouseup = null;
+		}
+	}
+</script>
+</html>

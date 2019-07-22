@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016继承一.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Father(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Father.prototype.sayName = function(){
+		console.log(" i am "+this.name);
+	}
+
+	function Borther(name,age,sex){
+		/*
+		this.name = name;
+		this.age = age;
+		*/
+		Father.call(this,name,age);
+		this.sex = sex;
+	}
+	Son.prototype.saySex = function(){
+		console.log(" i am "+this.sex);
+	}
+
+	Father.prototype = Son.prototype;
+</script>
+</html>

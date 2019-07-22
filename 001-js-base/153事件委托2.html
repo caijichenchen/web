@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>153事件委托2.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			margin: 50px 100px;
+		}
+		li{
+			list-style: none;
+			line-height: 40px;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">点击生成</button>
+	<ul id="list">
+		<li>1<a class="del" href="javascript:;">删除</a></li>
+		<li>2<a class="del" href="javascript:;">删除</a></li>
+		<li>3<a class="del" href="javascript:;">删除</a></li>
+		<li>4<a class="del" href="javascript:;">删除</a></li>
+		<li>5<a class="del" href="javascript:;">删除</a></li>
+		<li>6<a class="del" href="javascript:;">删除</a></li>
+	</ul>
+</body>
+<script>
+	var oUl = document.getElementById('list');
+	var oBtn = document.getElementById('btn');
+
+	oBtn.onclick = function(){
+		var newLi = document.createElement('li');
+		newLi.innerHTML = 'newLi';
+		var newA = document.createElement('a');
+		newA.href = '#';
+		newA.innerHTML = "删除";
+		newA.className = 'del';
+
+		oUl.appendChild(newLi);
+		newLi.appendChild(newA);
+	}
+
+	oUl.onclick = function(ev){
+		console.log(ev.target);
+		var oTarget = ev.target;
+		if(oTarget.className == 'del'){
+			oUl.removeChild(oTarget.parentNode);
+		}
+	}
+</script>
+</html>

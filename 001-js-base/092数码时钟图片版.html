@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>092数码时钟图片版.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #000;
+		}
+		#box{
+			font-size: 40px;
+			text-align:center;
+			color: #fff;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img src="" alt="">
+		<img src="" alt="">
+		:
+		<img src="" alt="">
+		<img src="" alt="">
+		:
+		<img src="" alt="">
+		<img src="" alt="">
+	</div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+	var aImg = oBox.children;
+
+	function toStr(num){
+		return num < 10 ? "0"+num : ""+num;
+	}
+
+	function showTime(){
+		var today = new Date();
+		var iHour = today.getHours();
+		var iMinute = today.getMinutes();
+		var iSecond = today.getSeconds();
+		var timer = toStr(iHour) + toStr(iMinute) + toStr(iSecond);
+
+		for(var i = 0;i < aImg.length;i++){
+			aImg[i].src = "image/" + timer.charAt(i) + ".png";
+		}
+	}
+	setInterval(showTime,1000);
+	showTime();
+</script>
+</html>

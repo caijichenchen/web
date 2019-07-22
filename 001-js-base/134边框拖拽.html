@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>134边框拖拽.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: #f69;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.newdiv{
+			/*border: 5px solid #000;*/
+			opacity: 0.7;
+			position: absolute;
+			left: 0;
+			top: 0;
+			/*background-color: green;*/
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+
+	oBox.onmousedown = function(ev){
+		var iLeft = ev.clientX - oBox.offsetLeft;
+		var iTop = ev.clientY - oBox.offsetTop;
+		var oLeft = 0;
+		var oTop = 0;
+
+
+		var newbox = document.createElement('div');
+		document.body.appendChild(newbox);
+		newbox.style.width = oBox.offsetWidth + 'px';
+		newbox.style.height = oBox.offsetHeight + 'px';
+		newbox.style.top = oBox.offsetTop + 'px';
+		newbox.style.left = oBox.offsetLeft + 'px';
+		newbox.className = 'newdiv';
+
+		document.onmousemove = function(ev){
+			oLeft = ev.clientX - iLeft;
+			oTop = ev.clientY - iTop;
+			if(oLeft < 0){
+				oLeft = 0;
+			}else if(oLeft > window.innerWidth - newbox.offsetWidth){
+				oLeft = window.innerWidth - newbox.offsetWidth;
+			}
+			if(oTop < 0){
+				oTop = 0;
+			}else if(oTop > window.innerHeight - newbox.offsetHeight){
+				oTop = window.innerHeight - newbox.offsetHeight;
+			}
+
+
+			newbox.style.left = oLeft + 'px';
+			newbox.style.top = oTop + 'px';
+		}
+		document.onmouseup = function(){
+			oBox.style.left = newbox.offsetLeft + 'px';
+			oBox.style.top = newbox.offsetTop + 'px';
+			document.body.removeChild(newbox);
+			document.onmousemove = null;
+			document.onmouseup = null;
+		}
+	}
+</script>
+</html>

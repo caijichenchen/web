@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>021内存生命周期.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	js引擎如何管理内存
+	1.内存生命周期
+		* 分配一块小内存空间，得到使用权
+		* 存储数据，反复操作
+		* 释放小内存空间
+	2.释放内存空间
+		*局部变量：函数执行完自动释放
+		*对象：成为垃圾对象==>垃圾回收器自动回收
+	*/
+
+	var a = 3;
+	var obj = {
+		age : 12
+	}
+	obj = null; //此时为重新赋值不是释放
+
+	function fn(){
+		var b = {};
+	}
+	fn();//局部变量b是自动释放，b所指向的对象在后面某个时刻由垃圾回收期回收
+</script>
+</html>

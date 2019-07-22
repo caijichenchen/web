@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>043-操作DOM-复制节点.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: #f69;
+		}
+	</style>
+</head>
+<body>
+	<button>复制1</button>
+	<button>复制2</button>
+	<div>
+		div
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('div').click(function(){
+			alert('hello');
+		});
+		//根据上一次的对象复制，默认false是不复制事件的，true复制事件
+		$('button').eq(0).click(function(){
+			var $result = $('div').clone(false);
+			$('body').append($result);
+		});
+		$('button').eq(1).click(function(){
+			var $result = $('div').clone(true);
+			$('body').append($result);
+		});
+	})
+</script>
+</html>

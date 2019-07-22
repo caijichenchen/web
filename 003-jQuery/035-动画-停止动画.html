@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>035-动画-停止动画.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			margin-top: 20px;
+			width: 200px;
+			height: 200px;
+			background-color: #f69;
+			/*display: none;*/
+			opacity: 0.2;
+		}
+	</style>
+</head>
+<body>
+	<button>点击开始</button>
+	<button>点击停止</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).click(function(){
+			$('div').animate({width:600},1000).animate({height:600},1000).animate({opacity:1},1)
+		})
+		$('button').eq(1).click(function(){
+			// $('div').stop();
+			// $('div').stop(true);
+			// $('div').stop(false,true);
+			// $('div').stop(true,true);
+			$('div').stop(true,false);
+		})
+	})	
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-点击隐藏父元素.html</title>
+</head>
+<body>
+	<ul>
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+	</ul>
+</body>
+<script>
+	var aA = document.querySelectorAll('a');
+	// console.log(aA);
+	// console.log(aLi);
+	for(var i = 0;i<aA.length;i++){
+		aA[i].onclick = function(){
+			this.parentNode.style.display = 'none';
+		}
+	}
+</script>
+</html>

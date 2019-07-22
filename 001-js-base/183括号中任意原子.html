@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>183括号中任意原子.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = "scaicc6ca4ca65c13c2";
+	var reg1 = /[a-z]/g;
+
+	console.log(str);
+	console.log(str.replace(reg1,"*"));
+
+	var str1 = "hello泽阳大佐";
+	var reg2 = /[\u4e00-\u9fa5]/g;
+
+	console.log(str1);
+	console.log(str1.replace(reg2,"*"));
+
+	var str2 = "hi,泽阳大佐";
+	var reg3 = /[\u4e00-\u9fa5]/g;
+
+	function getLen(){
+		return str2.replace(reg3,'aa').length;
+	}
+
+	console.log(str2);
+	// console.log(str2.replace(reg3,"*"));
+	console.log(getLen());
+</script>
+</html>

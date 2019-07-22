@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>047-ajax-jqXHR.html</title>
+</head>
+<body>
+	<button>请求数据</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').click(function(){
+			var jqXHR = $.ajax({
+				url:"044-data.json",
+			})
+			console.log(jqXHR);
+			jqXHR.abort();
+			jqXHR.done(function(data,statusMsg,jqXHR){
+				console.log("1:::")
+				console.log("data:::",data);
+				console.log("statusMsg:::",statusMsg);
+				console.log("jqXHR:::",jqXHR);
+			})
+			.fail(function(jqXHR,statusMsg){
+				console.log("2:::");
+				console.log("statusMsg:::",statusMsg);
+				console.log("jqXHR:::",jqXHR);
+			})
+			.always(function(data,statusMsg){
+				console.log("3:::");
+				console.log("statusMsg:::",statusMsg);
+				console.log("data:::",data);
+			})
+		})
+
+	})
+</script>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>链式动画</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin: 20px auto;
+		}
+		#box3{
+			opacity: 0.2;
+		}
+		#box2{
+			opacity: 0.2;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div id="box1"></div>
+		<div id="box2"></div>
+		<div id="box3"></div>
+	</div>
+</body>
+<script>
+	var oBox1 = document.getElementById('box1');
+	var oBox2 = document.getElementById('box2');
+	var oBox3 = document.getElementById('box3');
+	var iSpeed = 0;
+
+	function iChange(obj,attr,iTarget,isLinear,fnEnd){
+		if(isLinear == undefined){
+			isLinear = true;
+		}
+		clearInterval(obj.time);
+		obj.time = setInterval(function(){
+			var isClearCurrent = false;
+			var iVal = parseFloat(getComputedStyle(obj,false)[attr]);
+			if(attr == 'opacity'){
+				iVal = Math.round(iVal * 100);
+			}
+			if(isLinear){ //匀速动画
+				if(iVal < iTarget){
+					iSpeed = 7;
+				}else{
+					iSpeed = -7;
+				}
+				if(Math.abs(iTarget - iVal) < Math.abs(iSpeed)){
+					if(attr == 'opacity'){
+						obj.style[attr] = iTarget / 100;
+					}else{
+						obj.style[attr] = iTarget + 'px';
+					}
+					// clearInterval(obj.time);
+					isClearCurrent = true;
+				}
+			}else{ //减速动画
+				iSpeed = (iTarget - iVal)/10;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+				if(!iSpeed){
+					isClearCurrent = true;
+				}
+			}
+			if(isClearCurrent){
+				clearInterval(obj.time);
+				// fnEnd();
+				// if(typeof fnEnd == 'function'){
+				// 	fnEnd();
+				// }
+				typeof fnEnd == 'function'  && fnEnd();
+			}else{
+				if(attr == 'opacity'){
+						obj.style[attr] = (iVal + iSpeed)/100;
+					}else{
+						obj.style[attr] = iVal + iSpeed + 'px';
+					}
+			}
+		},30)
+	}
+
+	oBox1.onmouseover = function(){
+		iChange(oBox1,'width',400);
+	}
+	oBox2.onclick = function(){
+		iChange(oBox2,'height',400,false,function(){
+			iChange(oBox2,'opacity',100);
+		});
+	}
+	oBox3.onclick = function(){
+		iChange(oBox3,'opacity',100);
+	}
+</script>
+</html>

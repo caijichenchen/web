@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>200验证用户名.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		p{
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+	<textarea name="" id="txt" cols="30" rows="2"></textarea>
+	<button id="btn">注册</button>
+	<p id="prompt"></p>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	var oPrompt = document.getElementById('prompt');
+
+	oTxt.style.paddingLeft = "12px";
+
+	oBtn.onclick = function(){
+		var iVal = oTxt.value;
+		var reg2 = /\w+/g;
+		var reg3 = /[\u4e00-\u9fa5]/g;
+		var l = iVal.replace(reg3,"aa").length;
+
+		if(iVal == ''){
+			oPrompt.innerHTML = "用户名不能为空!";
+			oPrompt.style.color = "#f00";
+		}else{
+			if((reg2.test(iVal) || reg3.test(iVal)) && l < 14 ){
+				oPrompt.innerHTML = "当前用户名可以注册";
+				oPrompt.style.color = "green";
+			}else{
+				oPrompt.innerHTML = "当前用户名长度不合法!";
+				oPrompt.style.color = "#f00";
+			}
+		}
+		var reg4 = /[a-zA-Z_]/g;
+		if((iVal.match(reg3)||iVal.match(reg4)) == null){
+			oPrompt.innerHTML = "当前用户名不能全是数字!";
+			oPrompt.style.color = "#f00";
+		}
+		console.log(l);
+	}
+</script>
+</html>

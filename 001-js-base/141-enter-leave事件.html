@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>141-enter-leave事件.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#father{
+			width: 500px;
+			height: 500px;
+			background-color: #ff6700;
+			margin: 50px auto;
+			overflow: hidden;
+		}
+		#son{
+			width: 100px;
+			height: 100px;
+			background-color: #ccc;
+			margin: 200px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="father">
+		<div id="son"></div>
+	</div>
+</body>
+<script>
+	var oFather = document.getElementById('father');
+	var oSon = document.getElementById('son');
+
+	//穿过子元素会重新打印
+	oFather.onmouseover = function(){
+		console.log('oFather.onmoseover');
+	}
+	oFather.onmouseout = function(){
+		console.log('oFather.onmoseout');
+	}
+	//穿过子元素不打印
+	oFather.onmouseover = function(){
+		console.log('oFather.onmoseover');
+	}
+	oFather.onmouseout = function(){
+		console.log('oFather.onmoseout');
+	}
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032-动画-卷入卷出切换.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			margin-top: 20px;
+			width: 200px;
+			height: 200px;
+			background-color: #f69;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button>卷出</button>
+	<button>卷入</button>
+	<button>切换</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).click(function(){
+			$('div').slideDown(1000,function(){
+				console.log('slideDown...');
+			})
+		})
+		$('button').eq(1).click(function(){
+			$('div').slideUp(1000,function(){
+				console.log('slideUp...');
+			})
+		})
+		$('button').eq(2).click(function(){
+			$('div').slideToggle(1000,function(){
+				console.log('slideToggle...');
+			})
+		})
+	})
+</script>
+</html>

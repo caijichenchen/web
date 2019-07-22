@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-jquery查找元素.html</title>
+</head>
+<body>
+	<ul id="ul1">
+		<li class="li1">11</li>
+		<li class="li1">12</li>
+		<li class="li1">13</li>
+		<li class="li1">14</li>
+		<li class="li1">15</li>
+		<li class="li2">1</li>
+		<li class="li2">2</li>
+		<li class="li2">3</li>
+		<li class="li2">4</li>
+		<li class="li2">5</li>
+	</ul>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		console.log($('#ul1').find('.li1'));
+	})
+</script>	
+</html>

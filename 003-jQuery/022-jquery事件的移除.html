@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022-jquery事件的移除.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+			background-color: #f69;
+		}
+	</style>
+</head>
+<body>
+	<button>点击移除</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		function fn(){
+			alert('fn click');
+		}
+		$('div').click(function(){
+			alert('click');
+		})
+		$('div').on('click',function(){
+			alert('on click');
+		})
+		$('div').click(fn)
+		$('div').on('mouseover',function(){
+			alert('on mouseover');
+		})
+
+		$('button').click(function(){
+			// $('div').off();
+			// $('div').off('click');
+			$('div').off('click',fn);
+		})
+		
+	})
+</script>
+</html>

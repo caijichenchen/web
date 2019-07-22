@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>199字符串方法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str1 = 'good baby,have a good day';
+	console.log(str1.search(/good/));//0
+	console.log(str1.search(/good/g));//0
+	console.log(str1.search(/bady/g));//0
+	
+  	var str2 = "a2018-05-10b2019-06-10c";
+  	console.log(str2.match(/\d{4}-\d{2}-\d{2}/g));
+  	console.log(str2.match(/\d{4}-\d{2}-\d{2}/));
+
+  	var str3 = "aabaa";
+  	console.log(str3.split("").reverse().join("") == str3);
+</script>
+</html>

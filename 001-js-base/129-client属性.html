@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>128-client属性.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: #f69;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+
+	function getScrolltop(){
+		return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+	}
+	function getScrollleft(){
+		return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft;
+	}
+	document.onmousemove = function(ev){
+		console.log(ev);
+		console.log(oBox.offsetTop);
+		console.log(oBox.offsetLeft);
+		oBox.style.left = getScrollleft() + ev.clientX -25 + 'px';
+		oBox.style.top = getScrolltop() + ev.clientY -25 + 'px';
+	}
+</script>
+</html>

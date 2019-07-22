@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>040构建对象.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	;(function(w){
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		Person.prototype = {
+			constructor:Person,
+			sayName:function(){
+				console.log("i am "+this.name);
+			},
+			sayAge:function(){
+				console.log("i am "+this.age);
+			}
+		}
+		w.Person = Person;
+	})(window)
+	var Tom = new Person("tom",18);
+	console.log(Tom)
+</script>
+</html>

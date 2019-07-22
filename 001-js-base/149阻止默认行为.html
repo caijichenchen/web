@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>149阻止默认行为.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 350px;
+			background-color: #f69;
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+
+	document.oncontextmenu = function(ev){
+		oBox.style.left = ev.clientX + 'px';
+		oBox.style.top = ev.clientY + 'px';
+		oBox.style.display = 'block';
+		// return false;
+		event.preventDefault();
+	}
+
+	document.onclick = function(){
+		oBox.style.display = "none";
+	}
+
+	oBox.onclick = function(ev){
+		ev.stopPropagation();
+	}
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>隐藏伸缩菜单</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;	
+		}
+		#father{
+			width: 600px;
+			height: 400px;
+			background-color: #ccc;
+			position: absolute;
+			top: 0;
+			left: -500px;
+		}
+		#son{
+			width: 100px;
+			height: 400px;
+			background-color: pink;
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div id="father">
+		<div id="son"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	var oSon = document.getElementById('son');
+	var oFather = document.getElementById('father');
+	var iSpeed = 0;
+
+	oFather.onmouseover = function(){
+		clearInterval(oFather.time);
+		oFather.time = setInterval(function(){
+			if(oFather.offsetLeft < '0px'){
+				iSpeed = -7;
+			}else{
+				iSpeed = 7;
+			}
+			if(Math.abs(0 - oFather.offsetLeft) < Math.abs(iSpeed)){
+				oFather.style.left = 0;
+				clearInterval(oFather.time);
+			}else{
+				oFather.style.left = oFather.offsetLeft + iSpeed + 'px';
+			}
+		},30)
+	}
+	oFather.onmouseout = function(){
+		clearInterval(oFather.time);
+		oFather.time = setInterval(function(){
+			if(oFather.offsetLeft < '-500px'){
+				iSpeed = 7;
+			}else{
+				iSpeed = -7;
+			}
+			if(Math.abs(-500 - oFather.offsetLeft) < Math.abs(iSpeed)){
+				oFather.style.left = -500+'px';
+				clearInterval(oFather.time);
+			}else{
+				oFather.style.left = oFather.offsetLeft + iSpeed + 'px';
+			}
+		},30)
+	}
+</script>
+</html>

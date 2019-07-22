@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>143键盘事件发布应用.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			margin: 100px auto;
+			width: 600px;
+		}
+		li{
+			line-height: 40px;
+			border-bottom: 1px solid #ccc;
+			color: #f69;
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<textarea id="txt" cols="30" rows="10"></textarea>
+		<button id="btn">发布</button>
+		<ul id="list"></ul>
+	</div>
+</body>
+<script src="iChange.js"></script>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oTxt = document.getElementById('txt');
+	var oUl = document.getElementById('list');
+	
+
+	oBtn.onclick = function(){
+		var newLi = document.createElement('li');
+		var iVal = oTxt.value;
+		newLi.style.height = 0;
+		newLi.innerHTML = iVal;
+		newLi.style.opacity = 0;
+		
+
+		oUl.insertBefore(newLi,oUl.firstChild);
+		iChange(newLi,{height:40,opacity:100},true);
+		oTxt.value = "";
+	}
+
+	document.onkeydown = function(ev){
+		if(ev.keyCode == 13 && ev.ctrlKey){
+			oBtn.onclick();
+		}
+	}
+</script>
+</html>

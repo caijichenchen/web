@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-jquery其他静态方法.html</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//去除字符串两边的空格并返回
+		var str = "  ab  c  ";
+		/*
+		var res=str.trim();
+		console.log(res);
+		
+		var res = $.trim(str);
+		
+		//判断参数对象是不是window对象
+		var res=$.isWindow(window);
+		
+		var res = $.isWindow(str);
+		
+		//判断参数对象是不是真数组
+		var res=$.isArray(str);
+		
+		var res=$.isArray([1,2,3]);
+		
+		var res=$.isArray({0:"aa",1:"bb",2:"cc",length:3});
+		
+		//判断参数是不是函数
+		var res = $.isFunction(function(){
+
+		});
+		
+		var res = $.isFunction({});
+		*/
+		//合并对象
+		var obj1 = {name:"tom",age:18,sex:"male"};
+		var obj2 = {name:"leo",age:20};
+		var obj3 = {};
+		// var res = $.extend(obj1,obj2);
+		var res = $.extend(obj3,obj1,obj2);
+		console.log(res);
+		console.log(res === obj3);
+		
+		//改变函数内部this指向
+
+	})
+</script>
+</html>

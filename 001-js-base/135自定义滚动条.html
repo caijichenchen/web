@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>135自定义滚动条.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#father{
+			width: 400px;
+			height: 30px;
+			border: 1px solid #000;
+			margin: 50px auto;
+			position: relative;
+			box-sizing: border-box;
+		}
+		#son{
+			width: 30px;
+			height: 30px;
+			background-color: #f69;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			position: absolute;
+			top: 50%;
+			margin-top: -50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="father">
+		<div id="son"></div>
+	</div>
+	<div id="box"></div>
+</body>
+<script>
+	var oSon = document.getElementById('son');
+	var oFather = document.getElementById('father');
+	var oBox = document.getElementById('box');
+
+	oSon.onmousedown = function(ev){
+		var iLeft = ev.clientX - oSon.offsetLeft;
+		var iTop = ev.clientY - oSon.offsetTop;
+		var oLeft = 0;
+		var oTop = 0;
+
+		document.onmousemove = function(ev){
+			oLeft = ev.clientX - iLeft;
+			oTop = ev.clientY - iTop;
+			if(oLeft < 0){
+				oLeft = 0;
+			}else if(oLeft > oFather.offsetWidth - oSon.offsetWidth){
+				oLeft = oFather.offsetWidth - oSon.offsetWidth;
+			}
+			if(oTop < 0){
+				oTop = 0;
+			}else if(oTop > oFather.offsetHeight - oSon.offsetHeight){
+				oTop = oFather.offsetHeight - oSon.offsetHeight;
+			}
+
+			var iSacle = oLeft / (oFather.offsetWidth - oSon.offsetWidth);
+
+			oSon.style.left = oLeft + 'px';
+			oSon.style.top = oTop + 'px';
+			oBox.style.width = 100 + (400 * iSacle) + 'px';
+			oBox.style.height = 100 + (400 * iSacle) + 'px';
+		}
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		}
+	}
+</script>
+</html>

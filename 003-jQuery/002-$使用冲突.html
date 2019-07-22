@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-$使用冲突.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	(function(w){
+		function $(){
+			console.log($);
+		}
+		w.$=$;
+	})(window);
+</script>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	// console.log($);
+	
+	jQuery.noConflict();
+	jQuery(function(){
+		console.log(11);
+	})
+	$();
+	var kz = jQuery.noConflict();
+	kz(function(){
+		console.log(22);
+	})
+</script>
+</html>

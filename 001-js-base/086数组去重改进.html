@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>086数组去重改进.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [1,5,6,5,4,1];
+
+	function change(arr){
+		var result = [];
+		for(var i = 0;i < arr.length;i++){
+			if(result.indexOf(arr[i],0) == -1){
+				result.push(arr[i]);
+			}
+		}
+		return result;
+	}
+
+	var newArr = change(arr);
+	console.log(newArr);
+</script>
+</html>

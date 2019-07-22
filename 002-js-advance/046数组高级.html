@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>046数组高级.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [2,31,65,8,96,24];
+
+	//遍历数组但不会返回新数组
+	// var result = arr.forEach(function(value,index){
+	// 	console.log("value,index",value,index);
+	// })
+	// console.log(result);
+
+	//遍历数组会返回新数组
+	/*
+	var result = arr.map(function(value,index){
+	 	console.log("value,index",value,index);
+	 	return value*10;
+	 })
+	 console.log(result);
+	 */
+
+	 //遍历数组每一次判断为真的生成新数组
+	 /*
+	 var result = arr.filter(function(value,index){
+	 	console.log("value,index",value,index);
+	 	return value>30;
+	 })
+	 console.log(result);
+	 */
+
+	 //遍历数组所有值为真情况下返回真值
+	 /*
+	 var result = arr.every(function(value,index){
+	 	console.log("value,index",value,index);
+	 	return value>30;
+	 })
+	 console.log(result);
+	*/
+
+	//遍历数组遇到第一个真值停下
+	var result = arr.some(function(value,index){
+	 	console.log("value,index",value,index);
+	 	return value>30;
+	 })
+	 console.log(result);
+</script>
+</html>

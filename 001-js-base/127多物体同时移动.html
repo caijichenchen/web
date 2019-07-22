@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>126多物体同时移动.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 50px;
+			height: 50px;
+			background-image: url(image/star.jpg);
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		div:nth-child(1){
+			z-index: 10;
+		}
+		div:nth-child(2){
+			z-index: 9;
+		}
+		div:nth-child(3){
+			z-index: 8;
+		}
+		div:nth-child(4){
+			z-index: 7;
+		}
+		div:nth-child(5){
+			z-index: 6;
+		}
+		div:nth-child(6){
+			z-index: 5;
+		}
+		div:nth-child(7){
+			z-index: 4;
+		}
+		div:nth-child(8){
+			z-index: 3;
+		}
+		div:nth-child(9){
+			z-index: 2;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script>
+	function getScrolltop(){
+		return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+	}
+	function getScrollleft(){
+		return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft;
+	}
+	var oBox = document.getElementsByTagName('div');
+
+	document.onmousemove = function(ev){
+		oBox[0].style.left = getScrollleft() + ev.clientX + 'px';
+		oBox[0].style.top = getScrolltop() + ev.clientY + 'px';
+		for(var i=oBox.length-1;i>0;i--){
+			oBox[i].style.left = oBox[i-1].offsetLeft + 10 + 'px';
+			oBox[i].style.top = oBox[i-1].offsetTop + 10 + 'px';
+		}
+	}
+</script>
+</html>

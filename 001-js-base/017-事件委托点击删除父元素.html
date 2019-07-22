@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-事件委托点击删除父元素.html</title>
+</head>
+<body>
+	<ul>
+		<li> <a href="#">1</a></li>
+		<li> <a href="#">2</a></li>
+		<li> <a href="#">3</a></li>
+		<li> <a href="#">4</a></li>
+	</ul>
+</body>
+<script>
+	var oUl = document.querySelector('ul');
+	// console.log(oUl);
+	var aA = document.querySelectorAll('a');
+	var aLi = document.querySelectorAll('li');
+	/*
+	for(var i = 0;i<aA.length;i++){
+		aA[i].onclick = function(ev){
+			var oT = ev.target;
+			console.log(oT);
+			oUl.removeChild(oT.parentNode);
+		}
+	}
+	*/
+	oUl.onclick = function(ev){
+		var oT = ev.target;
+		console.log(oT);
+		oUl.removeChild(oT.parentNode)
+	}
+</script>
+</html>

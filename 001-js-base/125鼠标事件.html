@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>124鼠标事件.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: #f69;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+
+	oBox.onmousedown = function(){
+		console.log('onmousedown');
+	}
+	oBox.onmouseup = function(){
+		console.log('onmouseup');
+	}
+	oBox.onmousemove = function(){
+		console.log('onmousemove');
+	}
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>051-ajax请求流程.html</title>
+</head>
+<body>
+	<button id="btn">请求数据</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+
+	oBtn.onclick = function(){
+		//1.生成一个ajax对象
+		var oAjax = new XMLHttpRequest();
+		//2.建立连接
+		oAjax.open("GET","http://127.0.0.1:3000/051-data.json",true);
+		//3.发送问题
+		oAjax.send();
+		//4.服务器接收响应
+		oAjax.onreadystatechange = function(){
+			if(oAjax.readyState == 4){
+				if(oAjax.status == 200){
+					var str = JSON.parse(oAjax.responseText);
+					console.log(str.name)
+				}
+			}
+		}
+	}
+</script>
+</html>

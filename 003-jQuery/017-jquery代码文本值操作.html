@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-jquery代码文本值操作.html</title>
+</head>
+<body>
+	<div>hello</div>
+	<div>
+		hi
+		<p>world</p>
+	</div>
+	<input type="text" id="txt">
+	<button id="btn">获取</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		console.log($('div').html());
+		console.log($('div').eq(1).html('<h1>haha</h1>'));
+		console.log($('div').text());
+		console.log($('div').eq(1).text('<h1>haha</h1>'));
+		$('#btn').click(function(){
+			console.log($('#txt').val());
+		})
+	})
+</script>
+</html>

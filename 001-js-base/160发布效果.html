@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>160发布效果.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.wrap{
+			margin: 50px 300px;
+		}
+		ul li{
+			width: 274px;
+			list-style: none;
+			border-bottom: 1px solid #bdbdbd;
+			line-height: 40px;
+			color: #f69;
+		}
+		.del{
+			float: right;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<textarea id="txt" cols="40" rows="10"></textarea>
+		<button id="btn">发布</button>
+		<ul id="list"></ul>
+	</div>
+</body>
+<script src="iChange.js"></script>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	var oUl = document.getElementById('list');
+
+	oBtn.onclick = function(){
+		var iVal = oTxt.value;
+
+		if(iVal == ""){
+			alert('不能发布空信息!');
+		}else{
+			var newLi = document.createElement('li');
+			newLi.innerHTML = iVal;
+			newLi.style.height = 0;
+			newLi.style.opacity = 0;
+
+			var newA = document.createElement('a');
+			newA.href = '#';
+			newA.innerHTML = '删除';
+			newA.className = 'del';
+
+			oUl.insertBefore(newLi,oUl.firstChild);
+			newLi.appendChild(newA);
+
+			iChange(newLi,{height:40,opacity:100},false);
+			oTxt.value = '';
+		}		
+	}
+
+	oUl.onclick = function(ev){
+		console.log(ev.target);
+		var oTarget = ev.target;
+		if(oTarget.className == 'del'){
+			oUl.removeChild(oTarget.parentNode);
+		}
+	}
+</script>
+</html>

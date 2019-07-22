@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>125鼠标移动物体.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 50px;
+			height: 50px;
+			/*background-color: #f69;*/
+			background-image: url(image/iron.jpg);
+			background-size: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		body{
+			width: 3000px;
+			height: 6000px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	function getScrolltop(){
+		return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+	}
+	function getScrollleft(){
+		return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft;
+	}
+	var oBox = document.getElementById('box');
+
+	document.onmousemove = function(ev){
+		console.log(ev);
+		oBox.style.left = getScrollleft() + ev.clientX -25 + 'px';
+		oBox.style.top = getScrolltop() + ev.clientY -25 + 'px';
+	}
+</script>
+</html>

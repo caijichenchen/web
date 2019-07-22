@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>透明度处理</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			opacity: 0.2;
+			margin-top: 20px;		
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">点击开始</button>
+	<div id="box"></div>
+</body>
+<script type="text/javascript">
+	var oBtn = document.getElementById('btn');
+	var oBox = document.getElementById('box');
+	var iSpeed = 0;
+
+	oBtn.onclick = function(){
+		clearInterval(oBox.time);
+		oBox.time = setInterval(function(){
+			var iVal = parseFloat(getComputedStyle(oBox,false)['opacity']);
+			iVal = Math.round(iVal * 100);
+			// console.log(iVal);
+			if(iVal < 100){
+				iSpeed = 7;
+			}else{
+				iSpeed = -7;
+			}
+			if(Math.abs(100 - iVal) < Math.abs(iSpeed)){
+				oBox.style.opacity = 1;
+			}else{
+				oBox.style.opacity = (iVal + iSpeed)/100;
+			}
+			// console.log(iVal);
+		},30)
+	}
+</script>
+</html>

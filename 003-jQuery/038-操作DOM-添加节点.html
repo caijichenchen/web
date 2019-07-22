@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>038-操作DOM-添加节点.html</title>
+</head>
+<body>
+	<button>插入1</button>
+	<button>插入2</button>
+	<button>插入3</button>
+	<button>插入4</button>
+	<button>插入5</button>
+	<button>插入6</button>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).click(function(){
+			var oLi = $('<li>我是新生成的</li>');
+			// $('ul').append(oLi);
+			// oLi.appendTo($('ul'));
+			// $('ul').prepend(oLi);
+			// oLi.prependTo($('ul'));
+		})
+		$('button').eq(1).click(function(){
+			var op = $('<p>我是新生成的</p>');
+			// $('ul').after(op);
+			$('ul').before(op);
+		})
+
+	})
+</script>
+</html>

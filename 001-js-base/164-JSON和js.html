@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>164-JSON和js.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var obj = {
+		name:"tom",
+		age : 18,
+		friends:["leo","jvivas"],
+		sayHello: function(){
+			console.log('hello!' + this.name);
+		}
+	}
+	var json = '{"name":"tom","age" : 18,"friends":["leo","jvivas"]}'
+
+	console.log(obj);
+	console.log(json);
+	console.log(obj.name);
+	console.log(json.name);
+
+	var JSONobj = JSON.parse(json);//json里面不能有函数
+	var OBJjson = JSON.stringify(obj);//有函数忽略再转json
+
+	console.log(OBJjson);
+	console.log(JSONobj);
+</script>
+</html>

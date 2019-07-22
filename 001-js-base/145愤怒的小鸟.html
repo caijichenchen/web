@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>145愤怒的小鸟.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 600px;
+			height: 600px;
+			border: 1px solid #000;
+			margin: 50px auto;
+			position: relative;
+		}
+		#box img{
+			width: 70px;
+			height: 70px;
+			background-size: 100%;
+			background-repeat: no-repeat;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img src="image/bird.jpg" alt="">
+	</div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+	var oBoxImg = document.querySelector('#box img');
+	var iSpeed = 3;
+	var time = 0;
+	var timer = 0;
+
+	//1.随机生成障碍物
+	
+
+	//2.小鸟移动
+	//2.1不点击时自动落下
+	window.onload = function(){
+		time = setInterval(function(){
+				if(oBoxImg.style.top > oBox.offsetHeight - oBoxImg.offsetHeight ){
+					oBoxImg.style.top = oBox.offsetHeight - oBoxImg.offsetHeight;
+					clearInterval(time);
+				}else{
+					iSpeed +=1;
+					oBoxImg.style.top = oBoxImg.offsetTop + iSpeed + 'px';
+				}
+			},150)
+	}
+
+	document.onkeydown = function(ev){
+		if(ev.keyCode == 32){
+			clearInterval(time);
+			timer = setInterval(function(){
+				iSpeed = 3;
+				if(oBoxImg.style.top > oBox.offsetHeight - oBoxImg.offsetHeight ){
+					oBoxImg.style.top = oBox.offsetHeight - oBoxImg.offsetHeight;
+					clearInterval(timer);
+				}else{
+					oBoxImg.style.top = oBoxImg.offsetTop - iSpeed + 'px';
+				}
+			},50)
+		}
+		
+	}
+	document.onkeyup = function(){
+		clearInterval(timer);
+		time = setInterval(function(){
+				if(oBoxImg.style.top > oBox.offsetHeight - oBoxImg.offsetHeight ){
+					oBoxImg.style.top = oBox.offsetHeight - oBoxImg.offsetHeight;
+					clearInterval(time);
+				}else{
+					iSpeed +=1;
+					oBoxImg.style.top = oBoxImg.offsetTop + iSpeed + 'px';
+				}
+			},150)
+	}
+</script>
+</html>

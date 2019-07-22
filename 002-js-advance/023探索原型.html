@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023探索原型.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function A(){
+
+	}
+	A.prototype.n = 1;
+	A.prototype.z = 9;
+	var b = new A();
+
+	A.prototype = {
+		n : 2,
+		m : 3
+	}
+	var c = new A();
+	console.log(b.n,b.m,c.n,c.m,c.z);//1,undefined,2,3,undefined
+
+	function F(){
+
+	}
+	Object.prototype.a = function(){
+		console.log('a()');
+	}
+	F.prototype.b = function(){
+		console.log('b()');
+	}
+	var f = new F();
+	f.a();//可以
+	f.b();//可以
+	F.a();//可以
+	F.b();//不可以
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>041-操作DOM-删除节点.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: #f69;
+		}
+	</style>
+</head>
+<body>
+	<button>删除1</button>
+	<button>删除2</button>
+	<button>删除3</button>
+	<div>
+		我是div
+		<h2>标题</h2>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('div').eq(0).click(function(){
+			alert('click');
+		});
+		//删除会删除事件，并返回删除对象
+		$('button').eq(0).click(function(){
+			var $div = $('div').remove();
+			// console.log($div);
+			$('body').append($div);
+		});
+		$('button').eq(1).click(function(){
+			$('div').empty();
+		});
+		//删除但会保留事件
+		$('button').eq(2).click(function(){
+			$('div').detach();
+		});
+	})
+</script>
+</html>

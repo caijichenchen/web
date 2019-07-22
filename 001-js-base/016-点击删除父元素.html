@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-点击删除父元素.html</title>
+</head>
+<body>
+	<ul>
+		<li> <a href="#">1</a></li>
+		<li> <a href="#">2</a></li>
+		<li> <a href="#">3</a></li>
+		<li> <a href="#">4</a></li>
+	</ul>
+</body>
+<script>
+	var oUl = document.querySelector('ul');
+	// console.log(oUl);
+	var aA = document.querySelectorAll('a');
+	for(var i = 0;i<aA.length;i++){
+		aA[i].onclick = function(){
+			oUl.removeChild(this.parentNode);
+		}
+	}
+</script>
+</html>

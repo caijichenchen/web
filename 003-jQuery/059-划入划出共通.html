@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>059-划入划出共通.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 100px;
+			height: 50px;
+		}
+		.box{
+			width: 150px;
+			height: 150px;
+			position: absolute;
+			top: 150px;
+			left: 0;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<button>还原</button>
+	<button>移动</button>
+	<div class="box"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="move.js"></script>
+<!-- <script>
+	function init($elem){
+		this.$elem = $elem;
+		this.$elem.removeClass('transition');
+		this.nowx = parseFloat(this.$elem.css('left'));
+		this.nowy = parseFloat(this.$elem.css('top'));
+	}
+	function to(x,y,callback){
+		x = (typeof x == 'number') ? x : this.nowx;
+		y = (typeof y == 'number') ? y : this.nowy;
+		if(this.nowx == x && this.nowy == y) return;
+		console.log("will move to...");
+		typeof callback == 'function' && callback();
+		this.nowx = x;
+		this.nowy = y;
+	}
+	function Slide($elem){
+		
+		this.$elem = $elem;
+		this.$elem.removeClass('transition');
+		this.nowx = parseFloat(this.$elem.css('left'));
+		this.nowy = parseFloat(this.$elem.css('top'));
+		
+		init.call(this,$elem);
+	}
+	Slide.prototype = {
+		constructor : Slide,
+		to:function(x,y){
+			to.call(this,x,y,function(){
+				// console.log(this);
+				this.$elem.css({
+					left : x,
+					top : y
+				})
+				this.$elem.trigger('move');
+			}.bind(this))
+		},
+		x:function(x){
+			this.to(x);
+		},
+		y:function(y){
+			this.to(y);
+		}
+	}
+
+	function Js($elem){
+		init.call(this,$elem);
+	}
+	Js.prototype = {
+		constructor : Js,
+		to:function(x,y){
+			to.call(this,x,y,function(){
+				this.$elem
+				.stop()
+				.animate({
+					left:x,
+					top:y
+				})	
+			}.bind(this))
+		},
+		x:function(x){
+			this.to(x);
+		},
+		y:function(y){
+			this.to(y);
+		}
+	}
+</script> -->
+<script>
+	$(function(){
+		$box = $('.box');
+		// var move = new Js($box);
+		$box.move({});
+		$('.box').on('move moved',function(ev){
+			console.log(ev.type);
+		})
+		$('button').eq(0).on('click',function(){
+			// move.to(0,150);
+			$box.move('to',0,150);
+			// move.x(0)
+		});
+		$('button').eq(1).on('click',function(){
+			// move.to(300,300);
+			$box.move('to',150,150);
+			// move.x(300)
+		})
+	})
+</script>
+</html>

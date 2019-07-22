@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>184内容过滤.html</title>
+</head>
+<body>
+	<textarea name="" id="txt1" cols="30" rows="10"></textarea>
+	<button id="btn">过滤</button>
+	<textarea name="" id="txt2" cols="30" rows="10"></textarea>
+</body>
+<script>
+	var oTxt1 = document.getElementById('txt1');
+	var oBtn = document.getElementById('btn');
+	var oTxt2 = document.getElementById('txt2');
+
+	oBtn.onclick = function(){
+		var iVal = oTxt1.value;
+		var reg = /<[^<>]+>/g;
+		oTxt2.innerHTML = iVal.replace(reg,"*");
+	}
+</script>
+</html>

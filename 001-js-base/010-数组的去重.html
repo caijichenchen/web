@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-数组的去重.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [1,2,3,4,2];
+
+	
+	function mode(arr){
+		var result = [];
+		
+		for(var i = 0;i<arr.length;i++){
+			var falg = false;
+			for(var j = 0;j<result.length;j++){
+				if(arr[i] == result[j]){
+					falg = true;
+					break;
+				}
+			}
+			if(!falg){
+				result.push(arr[i]);
+			}
+		}
+		return result;
+	}
+	var newarr = mode(arr);
+	console.log(newarr);
+</script>
+</html>

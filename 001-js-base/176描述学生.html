@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>176描述学生.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function ShowStudent(name,age,grade,professional){
+		this.name = name;
+		this.age = age;
+		this.grade = grade;
+		this.professional = professional;
+		
+		if(!ShowStudent.prototype.sayGrade){
+			ShowStudent.prototype.sayGrade = function(){
+				console.log("i am "+this.grade);
+			}
+		}
+		if(!ShowStudent.prototype.sayProfessional){
+			ShowStudent.prototype.sayProfessional = function(){
+				console.log("i am come from "+this.professional);
+			}
+		}
+	}
+
+	var studentOne = new ShowStudent('tom',18,16,'English');
+	studentOne.sayGrade();
+	studentOne.sayProfessional();
+</script>
+</html>

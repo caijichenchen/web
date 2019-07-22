@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>040-插件-自定义插件.html</title>
+</head>
+<body>
+	<input type="checkbox" >足球
+	<input type="checkbox" >篮球
+	<input type="checkbox" >乒乓球
+	<button>全选</button>
+	<button>全不选</button>
+	<button>反选</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	/*
+	//拓展jQuery工具的方法
+	$.extend();
+	//拓展jQuery对象的方法
+	$.fn.extend();
+	*/
+	$.extend({
+		min:function(a,b){
+			return a<b ? a : b;
+		},
+		max:function(a,b){
+			return a>b ? a : b;
+		},
+		leftTrim:function(str){
+			return str.replace(/^\s+/,'');
+		},
+		rightTrim:function(str){
+			return str.replace(/\s+$/,'');
+		}
+	})
+	console.log($.min(3,5));
+	//拓展jQuery对象方法
+	$.fn.extend({
+		checkAll:function(){
+			this.prop('checked',true);//this是JQuery对象
+		},
+		uncheckAll:function(){
+			this.prop('checked',false);//this是jQuery对象
+		},
+		reverseCheck:function(){
+			//this是JQuery对象jQuery对象
+			this.each(function(){
+				//this是dom元素
+				this.checked = !this.checked;
+			})
+		}
+	})
+	$('button').eq(0).click(function(){
+		$('input').checkAll();
+	})
+	$('button').eq(1).click(function(){
+		$('input').uncheckAll();
+	})
+	$('button').eq(2).click(function(){
+		$('input').reverseCheck();
+	})
+</script>
+</html>

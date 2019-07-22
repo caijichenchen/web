@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>027-相册.html</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .page>input,
+        .page>a{
+            position: fixed;
+            top: 0;
+            width: 20%;
+            height: 34px;
+            transform: translateX();
+        }
+        #ctr1,#ctr1 + a{
+            left: 0%;
+        }
+        #ctr2,#ctr2 + a{
+            left: 20%;
+        }
+        #ctr3,#ctr3 + a{
+            left: 40%;
+        }
+        #ctr4,#ctr4 + a{
+            left: 60%;
+        }
+        #ctr5,#ctr5 + a{
+            left: 80%;
+        }
+        .page>a{
+            z-index: 1;
+            text-align: center;
+            text-decoration: none;
+            font-size: 24px;
+            background-color: #2d3d5f;
+            color: #fff;
+        }
+        .page>input{
+            z-index: 2;
+            opacity: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        .page>input:checked + a{
+            color:#ff2c4d;
+        }
+        .page{
+            height: 100%;
+            overflow: hidden;
+        }
+        .page>input:hover + a{
+            background-color: #555;
+        }
+        .page>input:hover{
+            cursor: pointer;
+        }
+        .content{
+            height: 100%;
+            margin-top: 34px;
+            transition: all 0.5s;
+        }
+        .panel{
+            height: 100%;
+            column-count: 4;
+            column-gap: 1em;
+            padding: 1em;
+            box-sizing: border-box;
+        }
+        #ctr1:checked ~ .content{
+            transform: translateY(0%);
+        }
+        #ctr2:checked ~ .content{
+            transform: translateY(-100%);
+        }
+        #ctr3:checked ~ .content{
+            transform: translateY(-200%);
+        }
+        #ctr4:checked ~ .content{
+            transform: translateY(-300%);
+        }
+        #ctr5:checked ~ .content{
+            transform: translateY(-400%);
+        }
+        .image{
+            height: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: all 0.5s;
+        }
+        .image img{
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            transition: all 0.5s;
+        }
+        .image img:hover{
+            transform: scale(1.1,1.1);
+            cursor: pointer;
+        }
+        .image.w{
+            height: 30%;
+        }
+        .image.h{
+            height: 65%;
+        }
+        .mt{
+            margin-top: 5%;
+        }
+        #ctr1:checked ~ .content>#page1,
+        #ctr2:checked ~ .content>#page2,
+        #ctr3:checked ~ .content>#page3,
+        #ctr4:checked ~ .content>#page4,
+        #ctr5:checked ~ .content>#page5
+        {
+            animation: sport 1s;
+        }
+        @keyframes sport{
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <input type="radio" name="set" id="ctr1" checked>
+        <a href="#">大海</a>
+        <input type="radio" name="set" id="ctr2">
+        <a href="#">森林</a>
+        <input type="radio" name="set" id="ctr3">
+        <a href="#">风景</a>
+        <input type="radio" name="set" id="ctr4">
+        <a href="#">天空</a>
+        <input type="radio" name="set" id="ctr5">
+        <a href="#">星空</a>
+        <div class="content">
+            <div class="panel" id="page1">
+                <div class="image w">
+                    <img src="img/大海/h01.jpg" alt="">
+                </div>
+                <div class="image h mt">
+                    <img src="img/大海/w01.jpg" alt="">
+                </div>
+                <div class="image h">
+                    <img src="img/大海/h02.jpg" alt="">
+                </div>
+                <div class="image w mt">
+                    <img src="img/大海/w02.jpg" alt="">
+                </div>
+                <div class="image w">
+                    <img src="img/大海/h03.jpg" alt="">
+                </div>
+                <div class="image h mt">
+                    <img src="img/大海/w03.jpg" alt="">
+                </div>
+                <div class="image h">
+                    <img src="img/大海/h04.jpg" alt="">
+                </div>
+                <div class="image w mt">
+                    <img src="img/大海/w04.jpg" alt="">
+                </div>
+            </div>  
+            <div class="panel" id="page2">
+                <div class="image w">
+                    <img src="img/城市/h05.jpg" alt="">
+                </div>
+                <div class="image h mt">
+                    <img src="img/城市/w05.jpg" alt="">
+                </div>
+                <div class="image h">
+                    <img src="img/城市/h06.jpg" alt="">
+                </div>
+                <div class="image w mt">
+                    <img src="img/城市/w06.jpg" alt="">
+                </div>
+                <div class="image w">
+                    <img src="img/城市/h07.jpg" alt="">
+                </div>
+                <div class="image h mt">
+                    <img src="img/城市/w07.jpg" alt="">
+                </div>
+                <div class="image h">
+                    <img src="img/城市/h08.jpg" alt="">
+                </div>
+                <div class="image w mt">
+                    <img src="img/城市/w08.jpg" alt="">
+                </div>
+            </div>
+            <div class="panel" id="page3">
+                <div class="image w">
+                    <img src="img/森林/h09.jpg" alt="">
+                </div>
+                <div class="image h mt">
+                    <img src="img/森林/w09.jpg" alt="">
+                </div>
+                <div class="image h">
+                    <img src="img/森林/h10.jpg" alt="">
+                </div>
+                <div class="image w mt">
+                    <img src="img/森林/w10.jpg" alt="">
+                </div>
+                <div class="image w">
+                    <img src="img/森林/h11.jpg" alt="">
+                </div>
+                <div class="image h mt">
+                    <img src="img/森林/w11.jpg" alt="">
+                </div>
+                <div class="image h">
+                    <img src="img/森林/h12.jpg" alt="">
+                </div>
+                <div class="image w mt">
+                    <img src="img/森林/w12.jpg" alt="">
+                </div>
+            </div>
+            <div class="panel" id="page4">
+                <div class="image w">
+                    <img src="img/天空/h13.jpg" alt="">
+                </div>
+                <div class="image h mt">
+                    <img src="img/天空/w13.jpg" alt="">
+                </div>
+                <div class="image h">
+                    <img src="img/天空/h14.jpg" alt="">
+                </div>
+                <div class="image w mt">
+                    <img src="img/天空/w14.jpg" alt="">
+                </div>
+                <div class="image w">
+                    <img src="img/天空/h15.jpg" alt="">
+                </div>
+                <div class="image h mt">
+                    <img src="img/天空/w15.jpg" alt="">
+                </div>
+                <div class="image h">
+                    <img src="img/天空/h16.jpg" alt="">
+                </div>
+                <div class="image w mt">
+                    <img src="img/天空/w16.jpg" alt="">
+                </div>
+            </div>
+            <div class="panel" id="page5">
+                <div class="image w">
+                    <img src="img/星空/h17.jpg" alt="">
+                </div>
+                <div class="image h mt">
+                    <img src="img/星空/w17.jpg" alt="">
+                </div>
+                <div class="image h">
+                    <img src="img/星空/h18.jpg" alt="">
+                </div>
+                <div class="image w mt">
+                    <img src="img/星空/w18.jpg" alt="">
+                </div>
+                <div class="image w">
+                    <img src="img/星空/h19.jpg" alt="">
+                </div>
+                <div class="image h mt">
+                    <img src="img/星空/w19.jpg" alt="">
+                </div>
+                <div class="image h">
+                    <img src="img/星空/h20.jpg" alt="">
+                </div>
+                <div class="image w mt">
+                    <img src="img/星空/w20.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>189密码验证.html</title>
+</head>
+<body>
+	
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>187合法年份.html</title>
+</head>
+<body>
+	<textarea name="" id="txt" cols="30" rows="2"></textarea>
+	<button id="btn">检测</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oTxt = document.getElementById('txt');
+
+	oBtn.onclick = function(){
+		var iVal = oTxt.value;
+		var reg = /^[a-zA-Z]\w{5,11}$/;
+
+		if(reg.test(iVal)){
+			alert("合法");
+		}else{
+			alert("不合法");
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>050-原理解析-extend.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function kquery(){
+
+	}
+	kquery.extend = kquery.prototype.extend = function(options){
+		for(i in options){
+			this[i]=options[i];
+		}
+	}
+	kquery.prototype.extend({
+		show:function(){
+			console.log(11);
+		}
+	})
+	kquery.extend({
+		gets:function(){
+			console.log(22);
+		}
+	})
+</script>
+<script>
+	var k1 = new kquery();
+	console.log(k1);
+	// k1.show();
+	// k1.gets();
+</script>
+</html>

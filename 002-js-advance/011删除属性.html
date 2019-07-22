@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011删除属性.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Object(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Object.prototype.sayName = function(){
+		console.log("i am "+this.name);
+	}
+	Object.prototype.LED = 2;
+
+	var obj1 = new Object("tom",18);
+	var obj2 = new Object("leo",20);
+
+	// console.log(delete Object.LED);
+
+	console.log(delete obj1.LED);
+	console.log(obj1.LED)
+
+	console.log(obj1);
+	console.log(obj2);
+</script>
+</html>

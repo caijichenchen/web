@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>030继承二.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Father(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	/*
+	Father.prototype.sayName = function(){
+		console.log(" i am "+this.name);
+	}
+	*/
+	//当继承对象的属性中有不能被枚举的属性时不能被继承
+	Object.defineProperty(Father.prototype,"sayName",{
+		value:function(){
+			console.log(" i am "+this.name);
+		},
+		enumerable:false
+	})
+	Father.prototype.sayAge = function(){
+		console.log(" i am "+this.age);
+	}
+
+	function Borther(name,age,sex){
+		Father.call(this,name,age);
+		this.sex = sex;
+	}
+	Borther.prototype.saySex = function(){
+		console.log(" i am "+this.sex);
+	}
+
+	for(var attr in Father.prototype){
+		Borther.prototype[attr] = Father.prototype[attr];
+	}
+	console.log(Borther.prototype);
+
+	var son = new Borther("tom",18,"male");
+	// son.sayName();
+	son.sayAge();
+	son.saySex();
+</script>
+</html>

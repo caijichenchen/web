@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>132吸附拖拽.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#father{
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+			margin: 50px auto;
+			position: relative;
+		}
+		#son{
+			width: 100px;
+			height: 100px;
+			background-color: #f69;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="father">
+		<div id="son"></div>
+	</div>
+</body>
+<script>
+	var oSon = document.getElementById('son');
+	var oFather = document.getElementById('father');
+
+	oSon.onmousedown = function(ev){
+		var iLeft = ev.clientX - oSon.offsetLeft;
+		var iTop = ev.clientY - oSon.offsetTop;
+		var oLeft = 0;
+		var oTop = 0;
+
+		document.onmousemove = function(ev){
+			oLeft = ev.clientX - iLeft;
+			oTop = ev.clientY - iTop;
+			if(oLeft < 20){
+				oLeft = 0;
+			}else if(oLeft + 20 > oFather.offsetWidth - oSon.offsetWidth){
+				oLeft = oFather.offsetWidth - oSon.offsetWidth;
+			}
+			if(oTop < 20){
+				oTop = 0;
+			}else if(oTop + 20 > oFather.offsetHeight - oSon.offsetHeight){
+				oTop = oFather.offsetHeight - oSon.offsetHeight;
+			}
+
+
+			oSon.style.left = oLeft + 'px';
+			oSon.style.top = oTop + 'px';
+		}
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		}
+	}
+</script>
+</html>

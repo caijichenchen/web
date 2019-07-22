@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>045-ajax-ajax接口.html</title>
+</head>
+<body>
+	<button>请求数据</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').click(function(){
+			$.ajax({
+				url:'http://127.0.0.1:3001',
+				//返回的数据类型
+				dataType:"jsonp",
+				jsonp:"callback",
+				//前台到后台的方法
+				// jsonp:"getData",
+				success:function(data,statusMsg,jqXHR){
+					console.log("1:::");
+					console.log("data:::",data);
+					console.log("statusMsg:::",statusMsg);
+					console.log("jqXHR:::",jqXHR);
+				},
+				error:function(statusMsg,jqXHR){
+					console.log("2:::");
+					console.log("statusMsg:::",statusMsg);
+					console.log("jqXHR:::",jqXHR);
+				}
+			})
+		})
+	})
+</script>
+</html>

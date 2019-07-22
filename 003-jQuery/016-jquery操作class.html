@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-jquery操作class.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+			margin-top: 20px;
+		}
+		.box2{
+			color: blue;
+		}
+		.box3{
+			background-color: #f69;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">切换</button>
+	<div>div1</div>
+	<div>div2</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// $('div').attr("class","box1 box2 box3");
+
+		$('div').addClass("box1 box3");
+		$('div').removeClass("box1");
+		$('#btn').click(function(){
+			$('div').toggleClass('box1 box2 box3');
+		})
+	})
+</script>
+</html>

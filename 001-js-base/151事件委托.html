@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>151事件委托.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			margin: 50px 100px;
+		}
+		li{
+			list-style: none;
+			line-height: 40px;
+		}
+	</style>
+</head>
+<body>
+	<ul id="list">
+		<li>1<a class="del" href="javascript:;">删除</a></li>
+		<li>2<a class="del" href="javascript:;">删除</a></li>
+		<li>3<a class="del" href="javascript:;">删除</a></li>
+		<li>4<a class="del" href="javascript:;">删除</a></li>
+		<li>5<a class="del" href="javascript:;">删除</a></li>
+		<li>6<a class="del" href="javascript:;">删除</a></li>
+	</ul>
+</body>
+<script>
+	var oUl = document.getElementById('list');
+
+	oUl.onclick = function(ev){
+		console.log(ev.target);
+		var oTarget = ev.target;
+		if(oTarget.className == 'del'){
+			oUl.removeChild(oTarget.parentNode);
+		}
+	}
+</script>
+</html>

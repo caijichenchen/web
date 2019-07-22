@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>148表单输入和提交.html</title>
+</head>
+<body>
+	<form action="https://www.baidu.com" id="sheet">
+		<input type="text" id="txt">
+		<input type="reset" id="btn">
+		<input type="submit" id="sub">
+		<p id="pp"></p>
+	</form>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	var oSub = document.getElementById('sub');
+	var oPb = document.getElementById('pp');
+	var oSheet = document.getElementById('sheet');
+
+
+	oTxt.onfocus = function(){
+		oPb.innerHTML = '请输入4-6位有效字符';
+		oPb.style.color = '#ccc';
+	}
+
+	/*oTxt.onblur = function(){
+		var len = oTxt.value.length;
+		if(len < 4 || len > 6){
+			oPb.innerHTML = '请输入正确字符';
+			oPb.style.color = '#f00';
+		}else{
+			oPb.innerHTML = '输入合法';
+			oPb.style.color = 'skyblue';
+		}
+	}*/
+
+	/*oTxt.onchange = function(){
+		var len = oTxt.value.length;
+		if(len < 4 || len > 6){
+			oPb.innerHTML = '请输入正确字符';
+			oPb.style.color = '#f00';
+		}else{
+			oPb.innerHTML = '输入合法';
+			oPb.style.color = 'skyblue';
+		}
+	}*/
+
+	/*oTxt.oninput = function(){
+		var len = oTxt.value.length;
+		if(len < 4 || len > 6){
+			oPb.innerHTML = '请输入正确字符';
+			oPb.style.color = '#f00';
+		}else{
+			oPb.innerHTML = '输入合法';
+			oPb.style.color = 'skyblue';
+		}
+	}*/
+    //重置
+	oBtn.onclick = function(){
+		console.log(333);
+	}
+	oSheet.onsub = function(){
+		console.log(111);
+	}
+	oSheet.onreset = function(){
+		console.log(222);
+	}
+	
+	oSub.onclick = function(){
+		console.log(444);
+	}
+</script>
+</html>

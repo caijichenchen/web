@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>底部固定</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 4000px;
+			height: 6000px;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script src="sChange.js"></script>
+<script type="text/javascript">
+	function getScrolltop(){
+		return document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset;
+	}
+	var oBox = document.getElementById('box');
+	var iSpeed = 0;
+
+	window.onscroll=function(){
+		var h = 0;
+		if(document.compatMode == 'CSS1Compat'){
+			h = document.documentElement.clientHeight;
+		}else{
+			h = document.body.clientHeight;
+		}
+		var iTop = h - oBox.offsetHeight + getScrolltop();
+		sChange(oBox,'top',iTop);
+	}
+	console.log(document.documentElement.clientHeight);
+</script>
+</html>

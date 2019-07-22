@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022回调函数.html</title>
+</head>
+<body>
+	<button id="btn">点击测试</button>
+</body>
+<script>
+	/*
+	1.回调函数特点
+	1).自定义
+	2).未调用
+	3).但执行了
+	2.常见回调函数
+	 *定时器
+	 *dom事件
+	 *ajax
+	 *生命周期函数
+	*/
+	document.getElementById('btn') = function(){
+		alert(this.innerHTML);
+	}
+
+
+	setTimeout(function(){
+		alert("hello");
+	},2000)
+</script>
+</html>

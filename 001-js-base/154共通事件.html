@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>154共通事件.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#father{
+			width: 400px;
+			height: 400px;
+			background-color: #f69;
+			margin: 50px auto;
+			overflow: hidden;
+		}
+		#son{
+			width: 200px;
+			height: 200px;
+			background-color: #ccc;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="father">
+		<div id="son"></div>
+	</div>
+</body>
+<script>
+	var oFather = document.getElementById('father');
+	var oSon = document.getElementById('son');
+
+	oFather.onclick = function(ev){
+		console.log(ev.target);
+		console.log(ev.currentTarget);
+		console.log(ev.type);
+	}
+</script>
+</html>

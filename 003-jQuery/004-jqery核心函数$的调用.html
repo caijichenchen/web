@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-jqery核心函数$的调用.html</title>
+</head>
+<body>
+	<div class="box">div1</div>
+	<div class="box">div2</div>
+	<div id="box3">div2</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	//接受函数，返回一个包含document的jQuery对象
+	/*
+	var res = $(function(){
+
+	});
+	
+	var res = $(function(){
+		console.log($('.box'));
+	})
+	
+	var oBox = document.getElementById('box3');
+	var res = $(function(){
+		console.log($('#box3'));
+		console.log($(oBox));
+		$(oBox).css("color",'red');
+		console.log($('<p>hello</p>'));//生成但不会插入页面
+	})
+	*/
+	console.log($(''));
+	console.log($(null));
+	console.log($(undefined));
+	console.log($(NaN));
+	console.log($(0));
+	console.log($(false));
+	console.log(res);
+</script>
+</html>

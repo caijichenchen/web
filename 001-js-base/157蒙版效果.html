@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>157蒙版效果.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#in{
+			width: 300px;
+			height: 400px;
+			background-color: #ccc;
+			position: absolute;
+			top: 200px;
+			left: 600px;
+			z-index: 999;
+			display: none;
+		}
+		#mask{
+			position: fixed;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			background-color: rgba(0,0,0,0.4);
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">登陆</button>
+	<box id="in"></box>
+	<box id="mask"></box>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oIn = document.getElementById('in');
+	var oMask = document.getElementById('mask');
+
+	oBtn.onclick = function(ev){
+		oIn.style.display = 'block';
+		oMask.style.display = 'block';
+
+		ev.stopPropgation();
+	}
+
+	oIn.onclick = function(ev){
+		
+
+		ev.stopPropagation();
+	}
+
+	document.onclick = function(){
+		oIn.style.display = 'none';
+		oMask.style.display = 'none';
+	}
+</script>
+</html>

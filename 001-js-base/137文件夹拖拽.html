@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>137文件夹拖拽.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 90px;
+			height: 80px;
+			background-image: url(image/QQ.jpg);
+			background-size: 100%;
+			background-repeat: no-repeat;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		.son{
+			background-image: url(image/QQ.jpg);
+			background-size: 100%;
+			background-repeat: no-repeat;
+			box-sizing: border-box;
+			opacity: 0.6;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+
+	oBox.onmousedown = function(ev){
+
+		var iLeft = ev.clientX - oBox.offsetLeft;
+		var iTop = ev.clientY - oBox.offsetTop;
+		var oTop = 0;
+		var oLeft = 0;
+
+		var newbox = document.createElement('div');
+		newbox.style.width = oBox.offsetWidth + 'px';
+		newbox.style.height = oBox.offsetHeight + 'px';
+		newbox.style.top = oBox.offsetTop + 'px';
+		newbox.style.left = oBox.offsetLeft + 'px';
+		newbox.className = 'son';
+		document.body.appendChild(newbox);
+
+		document.onmousemove = function(ev){
+			oLeft = ev.clientX - iLeft;
+			oTop = ev.clientY - iTop;
+			if(oLeft < 0){
+				oLeft = 0;
+			}else if(oLeft > window.innerWidth - newbox.offsetWidth){
+				oLeft = window.innerWidth - newbox.offsetWidth;
+			}
+			if(oTop < 0){
+				oTop = 0;
+			}else if(oTop > window.innerHeight - newbox.offsetHeight){
+				oTop = window.innerHeight - newbox.offsetHeight;
+			}
+			newbox.style.left = oLeft + 'px';
+			newbox.style.top = oTop + 'px';
+		}
+		document.onmouseup = function(ev){
+			oBox.style.top = newbox.offsetTop + 'px';
+			oBox.style.left = newbox.offsetLeft + 'px';
+			document.body.removeChild(newbox);
+			document.onmousedown = null;
+			document.onmouseup = null;
+		}
+	}
+</script>
+</html>

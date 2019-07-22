@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032继承四.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Father(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Father.prototype.sayName = function(){
+		console.log(" i am "+this.name);
+	}
+	Father.prototype.sayAge = function(){
+		console.log(" i am "+this.age);
+	}
+
+	function Borther(name,age,sex){
+		Father.call(this,name,age);
+		this.sex = sex;
+	}
+	
+
+	// Borther.prototype.__proto__ = Father.prototype;
+	Borther.prototype = Object.create(Father.prototype);
+	Borther.prototype.constructor = Borther;
+	console.log(Borther.prototype);
+
+	Borther.prototype.saySex = function(){
+		console.log(" i am "+this.sex);
+	}
+
+	var son = new Borther("tom",18,"male");
+	son.sayName();
+	son.sayAge();
+	son.saySex();
+	console.log(son.toString());
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009原型.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.NUM = 1;
+	var p1 = new Person("tom",18);
+	console.log("Person.prototype::",Person.prototype);
+	console.log("Person.prototype.__proto__::",Person.prototype.__proto__);
+	console.log("Person.prototype.constructor::",Person.prototype.constructor);
+	console.log("Person.prototype.constructor === Person::",Person.prototype.constructor === Person);
+	console.log("Person.prototype.__proto__::",Person.prototype.__proto__);
+	console.log("Object.prototype.__proto__::",Object.prototype.__proto__);
+	console.log("Person.prototype.__proto__ === Object.prototype::",Person.prototype.__proto__ === Object.prototype);
+	console.log("Object.prototype.constructor::",Object.prototype.constructor);
+	console.log("Object.prototype::",Object.prototype);
+
+	//构造函数的原型对象(prototype)的__proto__对象指向object的原型对象
+	//object的原型对象的__proto__对象指向null
+</script>
+</html>

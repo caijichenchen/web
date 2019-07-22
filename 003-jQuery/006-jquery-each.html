@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-jquery-each.html</title>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	(function(){
+		var arr = [1,2,3,4,5];
+		/*
+		$.each(arr,function(index,value){
+			console.log("index  value",index,value);
+		})
+		*/
+		/*
+		var aDiv = document.getElementsByTagName('div');
+		$.each(aDiv,function(index,value){
+			console.log("index  value",index,value);
+		})
+		*/
+		var arrs = {0:"aa",1:"bb",2:"cc",length:3};
+		/*
+		arrs.forEach(function(value,index){
+			console.log(value,index);
+		})
+		*/
+		var res=$.each(arrs,function(index,value){
+			console.log("index  value",index,value);
+		})
+		console.log(res)
+	})();
+</script>
+</html>

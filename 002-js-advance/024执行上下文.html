@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024执行上下文.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*依次打印
+	 *wd1::undinfed
+	 *fn1::1
+	 *fn1::2
+	 *fn1::3
+	 *fn2::3
+	 *fn2::2
+	 *fn2::1
+	 *wd2::1
+	 执行了几次上下文
+	 5
+	*/
+	console.log("wd1:",i);
+	var i = 1;
+	fn(1);
+	function fn(i){
+		if(i == 4){
+			return;
+		}
+		console.log("fn1::",i);
+		fn(i+1);
+		console.log("fn2::",i);
+	}
+	console.log("wd2::",i);
+</script>
+</html>

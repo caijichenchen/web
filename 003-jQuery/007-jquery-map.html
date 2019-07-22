@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-jquery-map.html</title>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	(function(){
+		var arr = [1,2,3,4,5];
+		var arrs = {0:"aa",1:"bb",2:"cc",length:3};
+		var aDiv = document.getElementsByTagName('div');
+		
+		// var res = arr.map(function(value,index){
+		// 	console.log("value index",value,index);
+		// 	return value;
+		// })
+		
+		var res = $.map(arr,function(value,index){
+			console.log("value index",value,index);
+			return value;
+		})
+		
+		/*
+		var res = arrs.map(function(value,index){
+			console.log("value index",value,index);
+		})
+		
+		var res = $.map(arrs,function(value,index){
+			console.log("value index",value,index);
+			return value;
+		})
+		
+		var res = aDiv.map(function(value,index){
+			console.log("value index",value,index);
+		})
+		
+		var res = $.map(aDiv,function(value,index){
+			console.log("value index",value,index);
+			return value;
+		})
+		*/
+		console.log(res === arr);
+	})();
+</script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>058-移动还原.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 100px;
+			height: 50px;
+		}
+		.box{
+			width: 150px;
+			height: 150px;
+			position: absolute;
+			top: 150px;
+			left: 0;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<button>还原</button>
+	<button>移动</button>
+	<div class="box"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	function Slide($elem){
+		this.$elem = $elem;
+		this.nowx = parseFloat(this.$elem.css('left'));
+		this.nowy = parseFloat(this.$elem.css('top'));
+	}
+	Slide.prototype = {
+		constructor : Slide,
+		to:function(x,y){
+			x = (typeof x == 'number') ? x : this.nowx;
+			y = (typeof y == 'number') ? y : this.nowy;
+			if(this.nowx == x && this.nowy == y) return;
+			console.log(11);
+			/*
+			this.$elem.css({
+				left:x,
+				top:y
+			})
+			*/
+			this.$elem.animate({
+				left:x,
+				top:y
+			})
+			this.nowx = x;
+			this.nowy = y;
+		},
+		x:function(x){
+			this.to(x);
+		},
+		y:function(y){
+			this.to(y);
+		}
+	}
+</script>
+<script>
+	$(function(){
+		$box = $('.box');
+		var move = new Slide($box);
+		$('button').eq(0).on('click',function(){
+			// move.to(0,150);
+			move.x(0)
+		});
+		$('button').eq(1).on('click',function(){
+			// move.to(300,300);
+			move.x(300)
+		})
+	})
+</script>
+</html>

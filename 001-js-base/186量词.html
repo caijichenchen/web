@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>186量词.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = "ca 665 asc46  68 1";
+	var reg1 = /\d/g;
+	var reg2 = /\d{0,3}/g;
+	var reg3 = /\d{3}/g;
+	var reg4 = /\d{2,}/g;
+	var reg5 = /\d+/g;
+	var reg6 = /\d?/g;
+
+	console.log(str);
+	console.log(str.replace(reg1,"*"));
+	console.log(str.replace(reg2,"*"));
+	console.log(str.replace(reg3,"*"));
+	console.log(str.replace(reg4,"*"));
+	console.log(str.replace(reg5,"*"));
+	console.log(str.replace(reg6,"*"));
+</script>
+</html>

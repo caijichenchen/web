@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>147愤怒的小鸟改.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 600px;
+			height: 600px;
+			border: 1px solid #000;
+			margin: 50px auto;
+			position: relative;
+			overflow: hidden;
+		}
+		#box img{
+			width: 70px;
+			height: 70px;
+			background-size: 100%;
+			background-repeat: no-repeat;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		.topLine{
+			position: absolute;
+			top: 0;
+			left: 100%;
+			width: 40px;
+			background-color: #f69;
+		}
+		.bottomLine{
+			position: absolute;
+			bottom: 0;
+			left: 100%;
+			width: 40px;
+			background-color: #f69;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img src="image/bird.jpg" alt="">
+	</div>
+</body>
+<script>
+	//碰撞检测
+	function checkBump(obj1,obj2){
+		if(obj1.offsetLeft + obj1.offsetWidth >= obj2.offsetLeft
+				&& obj1.offsetHeight + obj1.offsetTop >= obj2.offsetTop
+				&& obj2.offsetHeight + obj2.offsetTop >= obj1.offsetTop
+				&& obj2.offsetLeft + obj2.offsetWidth >= obj1.offsetLeft){
+				return true;
+			}else{
+				return false;
+			}
+	}
+
+	//生成随机整数
+	function createRandom(min,max){
+		return Math.round((max-min)*Math.random() + min);
+	}
+
+	var oBox = document.getElementById('box');
+	var oBoxImg = document.querySelector('#box img');
+	var iSpeed = 0;
+	var moveBird = 0;
+	var moveLines = 0;
+	var createLines = 0;
+	//判断
+	var clearAll = false;
+
+	
+
+	//1.设置小鸟自由落下
+	moveBird = setInterval(function(){
+		iSpeed +=1;
+		var t = oBoxImg.offsetTop + iSpeed;
+		if(t < 0){
+			t = 0;
+			death();
+		}else if(t > oBox.offsetHeight - oBoxImg.offsetHeight - 2){
+			t = oBox.offsetHeight - oBoxImg.offsetHeight - 2;
+			death();
+		}
+		oBoxImg.style.top = t + 'px';
+	},30)
+
+	//2.清楚定时器
+	function death(){
+		clearAll = true;
+		clearInterval(moveBird);
+		clearInterval(createLines);
+		clearInterval(moveLines);
+	}
+
+
+	//3.控制键盘下落
+	document.onkeydown = function(ev){
+		if(ev.keyCode == 32){
+			iSpeed -=20;
+		}
+	}
+
+	//4.生成柱子
+	function createLine(){
+		var topLine = document.createElement('div');
+		var bottomLine = document.createElement('div');
+
+		var h = createRandom(200,300);
+		var life = 200;
+		topLine.leftDate = 100;
+
+		topLine.className = 'topLine';
+		bottomLine.className = 'bottomLine';
+		topLine.style.height = h + 'px';
+		bottomLine.style.height = oBox.offsetHeight - h -life + 'px';
+
+		oBox.appendChild(topLine);
+		oBox.appendChild(bottomLine);
+	}
+
+	//柱子定时器
+	clearInterval(createLines);
+	createLines = setInterval(createLine,500);
+
+	//5.柱子向左移动
+	function moveLine(){
+		var aTopLine = document.querySelectorAll('.topLine');
+		var aBottomLine = document.querySelectorAll('.bottomLine');
+
+		
+
+		for(var i = 0;i < aTopLine.length;i++){
+			if(checkBump(oBoxImg,aTopLine[i]) || checkBump(oBoxImg,aBottomLine[i])){
+			death();
+			}
+
+			aBottomLine[i].style.left = aTopLine[i].style.left = aTopLine[i].leftDate - 1 + '%';
+
+			aTopLine[i].leftDate = aTopLine[i].leftDate - 1;
+
+			if(aTopLine[i].leftDate < -20){
+				oBox.removeChild(aTopLine[i]);
+				oBox.removeChild(aBottomLine[i]);
+			}
+		}
+	
+	}
+
+	//柱子移动定时器
+	clearInterval(moveLines);
+	moveLines = setInterval(moveLine,30);
+</script>
+</html>

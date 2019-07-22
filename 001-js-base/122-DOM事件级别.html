@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>121-DOM事件级别.html</title>
+</head>
+<body>
+	<button id="btn">点击开始</button>
+	<button id="btnoff">点击移除</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oBtnOff = document.getElementById('btnoff');
+
+	function showTom(){
+		console.log('tom');
+	}
+	function showLeo(){
+		console.log('Leo');
+	}
+	/*DOM 0级*/
+	/*
+	oBtn.onclick = showTom;
+	oBtn.onclick = null; 
+	oBtn.onclick = showLeo;
+	oBtn.onclick = function(){
+		console.log('js');
+	} */
+	/*DOM 2级*/
+	oBtn.addEventListener('click',showTom,false);
+	oBtn.addEventListener('click',showLeo,false);
+	oBtn.addEventListener('click',function(){
+		console.log('js');
+	},false);
+	oBtnOff.addEventListener('click',function(){
+		oBtn.removeEventListener('click',showTom,false);
+		oBtn.removeEventListener('click',showLeo,false);
+		oBtn.addEventListener('click',function(){
+		console.log('js');
+		},false);
+	},false)
+</script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>094延迟菜单.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			margin: 50px 100px;
+		}
+		#lbox{
+			width: 50px;
+			height: 400px;
+			background-color: #ccc;
+			float: left;
+		}
+		#rbox{
+			width: 400px;
+			height: 400px;
+			background-color: #f69;
+			margin-left: 20px;
+			float: left;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="lbox"></div>
+		<div id="rbox"></div>
+	</div>
+</body>
+<script>
+	var oLbox = document.getElementById('lbox');
+	var oRbox = document.getElementById('rbox');
+	var time = null;
+
+	oLbox.onmouseover = function(){
+		clearTimeout(time);
+		oRbox.style.display = 'block';
+	}
+
+	oLbox.onmouseout = function(){
+		time = setTimeout(function(){
+			oRbox.style.display = 'none';
+		},600)
+	}
+
+	oRbox.onmouseover = function(){
+		clearTimeout(time);
+		oRbox.style.display = 'block';
+	}
+
+	oRbox.onmouseout = function(){
+		time = setTimeout(function(){
+			oRbox.style.display = 'none';
+		},600)
+	}
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>202其他字符串方法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = "  a1s2d3F  5121  ";
+	var reg = /\d/g;
+	console.log(str.replace(reg,function(match,index,options){
+		console.log(match,index,options);
+		return 1;
+	}))
+
+	console.log(str.charAt(1));
+	console.log(str.charAt(1));
+	console.log(str.charCodeAt(1));
+	console.log(str.indexOf("s"));
+	console.log(str.indexOf("w"));
+	console.log(str.lastIndexOf("s"));
+	console.log(str.lastIndexOf("w"));
+	console.log(encodeURIComponent("https://www.baidu.com"));
+	console.log(decodeURIComponent("https%3A%2F%2Fwww.baidu.com"));
+	console.log(str.concat("jcna"));
+	console.log(str.slice(1,4));
+	console.log(str.substr(-4,4));
+	console.log(str.substring(1,4));
+	console.log(str.toLowerCase());
+	console.log(str.toUpperCase());
+	console.log(str.trim());
+</script>
+</html>

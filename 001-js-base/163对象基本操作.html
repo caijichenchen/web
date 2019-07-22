@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>163对象基本操作.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var obj = {
+		name:"tom",
+		age : 18,
+		friends:["leo","jvivas"],
+		sayHello: function(){
+			console.log('hello!' + this.name);
+		}
+	}
+
+	console.log(obj);
+
+	obj.male = 'sex';
+	obj.age = 20;
+	delete obj.friends;
+
+	obj.sayHello();
+
+	console.log(obj);
+</script>
+</html>

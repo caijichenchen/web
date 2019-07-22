@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>182选项卡封装.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		#tab-btn{
+			overflow: hidden;
+			margin-bottom: 20px;
+		}
+		#tab-btn li{
+			float: left;
+			width: 100px;
+			line-height: 40px;
+			text-align: center;
+			cursor: pointer;
+		}
+		#tab-content li{
+			width: 300px;
+			height: 300px;
+			line-height: 300px;
+			border: 1px solid #000;
+			text-align: center;
+			display: none;
+		}
+		.active{
+			color: #ff6700;
+			border-bottom: 2px solid #ff6700;
+		}
+	</style>
+</head>
+<body>
+	<ul id="tab-btn">
+		<li class="active">热门</li>
+		<li>电视影音</li>
+		<li>电脑</li>
+		<li>家居</li>
+	</ul>
+	<ul id="tab-content">
+		<li style="display: block;">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+</body>
+<script>
+	function Tab(aBtns,aContents){
+		//1.罗列属性
+		this.aBtns = document.querySelectorAll(aBtns);
+		this.aContents = document.querySelectorAll(aContents);
+
+		//2.绑定事件
+		this.onEvent();
+	}
+
+	Tab.prototype.onEvent = function(){
+		console.log(this);
+		//存this保证点击选项的时候页面也是指向在tab对象里面
+		var _this = this;
+		// console.log(this.aBtns);
+		for(var i = 0;i<this.aBtns.length;i++){
+			//存i值
+			this.aBtns[i].index = i;
+			// console.log(11);
+			this.aBtns[i].onclick = function(){
+				_this.WorkClick(this);
+				// console.log(this);
+			}
+		}
+	}
+
+	Tab.prototype.WorkClick = function(oBtns){
+		for(var j = 0;j<this.aBtns.length;j++){
+			this.aBtns[j].className = '';
+			this.aContents[j].style.display = 'none';
+		}
+		//传参，拿到上面的i值
+		oBtns.className = 'active';
+		this.aContents[oBtns.index].style.display = 'block';
+	}
+
+	new Tab("#tab-btn li","#tab-content li");
+</script>
+</html>

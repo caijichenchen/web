@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>173动态原型.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function createPerson(name,age){
+		// var obj = {};
+		// this = createPerson;
+		this.name = name;
+		this.age = age;
+		if(!createPerson.prototype.sayName){
+			console.log(11);
+			createPerson.prototype.sayName = function(){
+				console.log('i am ' + this.name);
+			}
+		}
+		if(!createPerson.prototype.sayAge){
+			console.log(22);
+			createPerson.prototype.sayAge = function(){
+				console.log('i am ' + this.age + 'years old');
+			}
+		}
+		createPerson.prototype.head = 1;
+	}
+
+	
+
+	var person1 = new createPerson('tom',18);
+	person1.sayAge();
+	person1.sayName();
+	console.log(person1);
+	console.log(person1.head);
+
+	var person2 = new createPerson('leo',28);
+	person2.sayAge();
+	person2.sayName();
+	console.log(person2);
+	console.log(person2.head);
+
+	console.log(person1.sayName == person2.sayName);
+</script>
+</html>

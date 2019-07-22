@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>041引用计数案例.html</title>
+</head>
+<body>
+	<button id="btn">测试</button>
+</body>
+<script>
+	show();
+	function show(){
+		var oBtn = document.getElementById('btn');
+		oBtn.onclick = function(){
+			alert(this.id);
+		}
+		oBtn = null;
+	}
+	
+</script>
+</html>

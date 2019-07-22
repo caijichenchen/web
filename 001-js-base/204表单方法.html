@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>204表单方法.html</title>
+</head>
+<body>
+	<form action="">
+		用户名：<input type="text" name="username" autocomplete="off">
+		<p id="msg"></p>
+	</form>
+</body>
+<script>
+	var aForm = document.forms;
+	var oForm = aForm[0];
+	var oUsername = oForm.username;
+	var oMsg = document.getElementById('msg');
+	oUsername.onfocus = function(){
+		oMsg.style.color = "blue";
+		oMsg.innerHTML = "请输入7-14位有效数字";
+	}
+	oUsername.onblur = function(){
+		var iVal = oUsername.value;
+		var reg = /.{7,14}/;
+
+		if(!reg.test(iVal)){
+			oMsg.style.color = "red";
+			oMsg.innerHTML = "不合法";
+		}else{
+			oMsg.style.color = "green";
+			oMsg.innerHTML = "合法"
+		}
+	}
+</script>
+</html>

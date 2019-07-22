@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010原型链.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Object(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Object.prototype.sayName = function(){
+		console.log("i am "+this.name);
+	}
+
+	var obj1 = new Object("tom",18);
+	var obj2 = new Object("leo",20);
+
+	console.log(obj1);
+	console.log(obj2);
+</script>
+</html>

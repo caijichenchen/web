@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>028-jquery特殊a标签.html</title>
+</head>
+<body>
+	<a href="http://www.baidu.com">跳转</a>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('a').click(function(){
+			alert('a click');
+		})
+		$('body').click(function(){
+			alert('body click');
+		})
+		//a标签会阻止默认行为但不会阻止冒泡
+		$('a').trigger('click');
+	})
+</script>
+</html>

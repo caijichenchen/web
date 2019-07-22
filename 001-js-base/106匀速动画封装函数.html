@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>匀速动画封装函数</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin: 20px auto;
+		}
+		#box3{
+			opacity: 0.2;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div id="box1"></div>
+		<div id="box2"></div>
+		<div id="box3"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	var oBox1 = document.getElementById('box1');
+	var oBox2 = document.getElementById('box2');
+	var oBox3 = document.getElementById('box3');
+	var iSpeed = 0;
+
+	function sChange(obj,attr,oTarget){
+		clearInterval(obj.time);
+		obj.time = setInterval(function(){
+			var iVal = parseFloat(getComputedStyle(obj,false)[attr]);
+			if(attr == 'opacity'){
+				iVal = Math.round(iVal * 100);
+			}
+			if(iVal < oTarget){
+				iSpeed = 7;
+			}else{
+				iSpeed = -7;
+			}
+			if(Math.abs(oTarget - iVal) < Math.abs(iSpeed)){
+				if(attr == 'opacity'){
+					obj.style[attr] = oTarget / 100;
+				}else{
+					obj.style[attr] = oTarget + 'px';
+				}
+				clearInterval(obj.time);
+			}else{
+				if(attr == 'opacity'){
+					obj.style[attr] = (iVal + iSpeed) / 100;
+				}else{
+					obj.style[attr] = iVal + iSpeed + 'px';
+				}
+			}
+		},30)
+	}
+
+
+	oBox1.onmouseover = function(){
+		sChange(oBox1,'width',500);
+	}
+
+	oBox2.onmouseover = function(){
+		sChange(oBox2,'height',500);
+	}
+
+	oBox3.onmouseover = function(){
+		sChange(oBox3,'opacity',100);
+	}
+</script>
+</html>

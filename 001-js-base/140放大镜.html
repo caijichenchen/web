@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>140放大镜.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			margin: 100px 200px;
+			position: relative;
+		}
+		#box{
+			width: 450px;
+			height: 450px;
+			border: 1px solid #000;
+			position: relative;
+		}
+		#mask{
+			width: 200px;
+			height: 200px;
+			background-color: rgba(255,255,0,0.5);
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: none;
+			cursor: move;
+		}
+		#list li{
+			width: 60px;
+			height: 60px;
+			margin-right: 20px;
+			opacity: 0.6;
+			float: left;
+			list-style: none;
+		}
+		#list .active{
+			opacity: 1;
+			border: 3px solid #f00;
+		}
+		#bigbox{
+			position: absolute;
+			top: 0;
+			left: 452px;
+			border: 1px solid #000;
+			width: 600px;
+			height: 600px;
+			overflow: hidden;
+			display: none;
+		}
+		#bigbox img{
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="box">
+			<img src="image/p_b_0001.jpg" alt="">
+			<div id="mask"></div>
+		</div>
+		<div id="bigbox"><img src="image/p_l_0001.jpg" alt=""></div>
+		<ul id="list">
+			<li class="active"><img src="image/p_s_0001.jpg" alt=""></li>
+			<li><img src="image/p_s_0002.jpg" alt=""></li>
+			<li><img src="image/p_s_0003.jpg" alt=""></li>
+		</ul>
+	</div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+	var oWrap = document.getElementById('wrap');
+	var oMask = document.getElementById('mask');
+	var oBigBox = document.getElementById('bigbox');
+	var aLi = document.querySelectorAll('#list li');
+	var aLiImg = document.querySelectorAll('#list img');
+	var oBigboxImg = document.querySelector('#bigbox img');
+	var oBoxImg = document.querySelector('#box img');
+
+
+	//1.监听Ul列表
+	for(var i = 0;i<aLi.length;i++){
+		aLi[i].index = i;
+		aLi[i].onmouseover = function(){
+			for(var j = 0;j<aLi.length;j++){
+				aLi[j].className = '';
+			}
+			this.className = 'active';
+			oBoxImg.src = "image/p_b_000"+(this.index + 1)+".jpg";
+			oBigboxImg.src = "image/p_l_000"+(this.index + 1)+".jpg";
+		}
+	}
+
+	//2.控制产品盒子
+	oBox.onmouseover = function(ev){
+		oMask.style.display = 'block';
+		oBigBox.style.display = 'block';
+		
+		oMask.onmousemove = function(ev){
+			//3.确定蒙板鼠标位置
+			var l = ev.clientX - oMask.offsetWidth*0.5 - oWrap.offsetLeft;
+			var t = ev.clientY - oMask.offsetHeight*0.5 - oWrap.offsetTop;
+			if(l < 0){
+				l = 0;
+			}else if(l > oBox.offsetWidth - oMask.offsetWidth){
+				l = oBox.offsetWidth - oMask.offsetWidth;
+			}
+			if(t < 0){
+				t = 0;
+			}else if(t > oBox.offsetHeight - oMask.offsetHeight){
+				t = oBox.offsetHeight - oMask.offsetHeight;
+			}
+
+			var iSacleX = l / (oBox.offsetWidth - oMask.offsetWidth);
+			var iSacleY = t / (oBox.offsetHeight - oMask.offsetHeight);
+
+			oMask.style.left = l + 'px';
+			oMask.style.top = t + 'px';
+			oBigboxImg.style.top = -(oBigboxImg.offsetHeight - oBigBox.offsetHeight)*iSacleY + 'px';
+			oBigboxImg.style.left = -(oBigboxImg.offsetWidth - oBigBox.offsetWidth)*iSacleX + 'px';
+		}
+	}
+	oBox.onmouseout = function(){
+		oMask.style.display = 'none';
+		oBigBox.style.display = 'none';
+	}
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>162利用对象属性去重数组.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [1,1,2,2,4,9,4];
+
+	function change(arr){
+		var result = [];
+		var obj = {};
+
+		for(var i = 0;i<arr.length;i++){
+			obj[arr[i]] = '';
+		}
+		for(attr in obj){
+			result.push(attr);
+		}
+		return result;
+	}
+	console.log(change(arr));
+</script>
+</html>

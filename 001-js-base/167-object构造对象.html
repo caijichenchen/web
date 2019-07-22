@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>167-object构造对象.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var obj1 = new Object();
+	obj1.name = 'Tom';
+	obj1.age = 18;
+	obj1.sayHi = function(){
+		console.log(this.name + ' say Hello');
+	}
+
+	var obj2 = new Object();
+	obj2.name = 'Tom';
+	obj2.age = 20;
+	obj2.sayHi = function(){
+		console.log(this.name + ' say Hello');
+	}
+
+	console.log(obj1);
+	console.log(obj2);
+	console.log(obj1.sayHi == obj2.sayHi);
+</script>
+</html>

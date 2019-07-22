@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015改变this指向.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function show(n1,n2){
+		console.log(this,n1,n2);
+	}
+
+	show();
+	show.call();
+	show.call("1",2,3);
+	show.call(null,2,3);
+	show.call({name:"tom"},2,3);
+
+	show();
+	show.apply();
+	show.apply("1",[2,3]);
+	show.apply(null,[2,3]);
+	show.apply({name:"leo"},[2,3]);
+
+	show();
+	var restult = show.bind("");
+	restult(2,3)
+	show.bind(null)(2,3);
+	show.bind({name:"js"})(2,3);
+</script>
+</html>

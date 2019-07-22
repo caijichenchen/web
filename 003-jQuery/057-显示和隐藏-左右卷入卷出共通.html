@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>057-显示和隐藏-左右卷入卷出共通.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			padding: 20px;
+			border: 20px solid yellow;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	/*
+	var opt = {
+		width:0,
+		paddingLeft:0,
+		paddingRight:0,
+		borderLeftWidth:0,
+		borderRightWidth:0,
+		opacity:0
+	}
+	function init($elem,callback){
+		if($elem.is(':hidden')){
+			$elem.data('status','hidden');
+			typeof callback == 'function' && callback();
+		}else{
+			$elem.data('status','shown');
+		}
+	}
+
+	function appear($elem,callback){
+		if($elem.data('status') == 'show') return;
+		if($elem.data('status') == 'shown') return;
+		$elem.trigger('show').data('status','show');
+		typeof callback == 'function' && callback();
+	}
+
+	function disappear($elem,callback){
+		if($elem.data('status') == 'hide') return;
+		if($elem.data('status') == 'hidden') return;
+		$elem.trigger('hide').data('status','hide');
+		typeof callback == 'function' && callback();
+	}
+	var change = {
+		js:{
+			init:function($elem){
+				change._init($elem);
+			},
+			appear:function($elem){
+				change._appear($elem,'fadeIn');
+			},
+			disappear:function($elem){
+				change._disappear($elem,'fadeOut');
+			}
+		},
+		jsLR:{
+			init:function($elem){
+				change._LRinit($elem,opt);
+			},
+			appear:function($elem){
+				$elem.show();
+				change._LRappear($elem);
+			},
+			disappear:function($elem){
+				change._LRdisappear($elem,opt);
+			}
+		}
+	}
+	change._LRinit = function($elem,options){
+		$elem.removeClass('transition');
+		var styles = {}
+		for(var i in options){
+			styles[i]=$elem.css(i);
+		}
+		$elem.data('styles',styles);
+		init($elem,function(){
+			$elem.css(options);
+		})
+	}
+	change._LRappear = function($elem){
+		appear($elem,function(){
+			$elem.stop().animate($elem.data('styles'),function(){
+				$elem.trigger('shown').data('status','shown');
+			})
+		})
+	}
+	change._LRdisappear = function($elem,options){
+		disappear($elem,function(){
+			$elem.stop().animate(options,function(){
+				$elem.trigger('hidden').data('status','hidden');
+			})
+		})
+	}
+	*/
+</script>
+<script src="show.js"></script>
+<script>
+	$(function(){
+
+		$('div').on('show shown hide hidden',function(ev){
+			console.log(ev.type);
+		});
+
+		// change.jsLR.init($('div'));
+		var $div = $('div');
+		$div.cartoon({
+			js:true,
+			mode:'fadeSlideLeftRight'
+		});
+
+		$('button').eq(0).click(function(){
+			$div.cartoon('show');
+		});
+		$('button').eq(1).click(function(){
+			$div.cartoon('hide');
+		})
+	})
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008触发异常.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var result = 0;
+	
+	function sum(num1,num2){
+		try{
+			if(isNaN(parseInt(num1))){
+				throw new Error('num1 is not a number');
+			}
+			for(var i = 0;i<num1;i++){
+				i += i;
+				console.log(11);
+				if(isNaN(parseInt(num1))){
+					throw new Error('num2 is not a number');
+				}
+				for(var j = 0;j<num2;j++){
+					j += j;
+					console.log(22)
+					result = i+j;
+				}
+			}
+			return result;
+		}
+		catch(err){
+			console.log(err)
+		}
+		finally{
+			console.log("hello world")
+		}
+	}
+	
+	sum(3,"a");
+	console.log(sum(3,"a"));
+</script>
+</html>

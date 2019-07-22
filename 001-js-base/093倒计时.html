@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>093倒计时.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #000;
+		}
+		#box{
+			font-size: 40px;
+			text-align:center;
+			color: #fff;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	function toStr(num){
+		return num < 10 ? '0'+num : ''+num;
+	}
+	var oBox = document.getElementById('box');
+	var oldDate = new Date('2019-5-23 16:15:00');
+	var time = null;
+	var o = oldDate.getTime();
+
+	function showTime(){
+		var l = (o - Date.now()) / 1000;
+		if(l <= 0){
+			l = 0;
+			clearInterval(time);
+		}
+		var iHours = parseInt(l/3600);
+		var iMinute = parseInt(l%3600/60);
+		var iSecond = parseInt(l%3600%60);
+		oBox.innerHTML = "距离活动开始还有" + toStr(iHours) + "小时" + toStr(iMinute) + "分钟" + toStr(iSecond) + "秒";
+		
+	}
+	time = setInterval(showTime,1000);
+	showTime();
+</script>
+</html>

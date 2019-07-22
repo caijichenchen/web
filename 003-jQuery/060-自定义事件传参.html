@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>060-自定义事件传参.html</title>
+</head>
+<body>
+	<button>点击</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		var obj1 = {name:"tom"};
+		var obj2 = {name:"leo"};
+		$('button').on('click',function(){
+			// $('button').trigger('load',obj1,obj2);
+			$('button').trigger('load',[obj1,obj2]);
+		});
+		$('button').on('load',function(ev,o1,o2){
+			console.log(o1,o2);
+		})
+	})
+</script>
+</html>

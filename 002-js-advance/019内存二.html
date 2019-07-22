@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>019内存二.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var a = {
+		age : 12
+	}
+	var b = a;
+	a = {
+		name : "tom",
+		age : 13
+	}
+	console.log(b.age,a.name,a.age);//12 tom 13
+
+	function fn(obj){
+		obj = {
+			age : 14
+		}
+		//函数内的局部变量   运行完后会成为垃圾对象
+		//将a的地址值赋值给obj,这样a和obj都会指向{name:"tom",age:13}这个对象,函数Fn运行,将obj的地址值重新赋值为{age:14}对象的地址,a的地址值没有改变,不会影响a所指对象里面的数据
+
+	}
+	fn(a);
+	console.log(a.age);//13
+
+	b = {
+		name : "leo",
+		age : 15
+	}
+	console.log(a.name,a.age);//tom 13
+</script>
+</html>
