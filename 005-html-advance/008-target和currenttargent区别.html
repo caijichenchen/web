@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-target和currenttargent区别.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#father{
+			width: 400px;
+			height: 400px;
+			background-color: #ccc;
+			border: 1px solid #000;
+			margin:100px auto;
+		}
+		#son{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin:150px auto; 
+		}
+	</style>
+</head>
+<body>
+	<div id="father">
+		<div id="son"></div>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('#father').on('click',function(ev){
+			//点击的具体dom元素
+			console.log(ev.target);
+			//绑定事件的dom元素
+			console.log(ev.currentTarget);
+			// console.log(11);
+		})
+	})
+</script>
+</html>

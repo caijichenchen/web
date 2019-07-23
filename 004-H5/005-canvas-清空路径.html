@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-canvas-清空路径.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#txt{
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			margin:auto;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="txt" width="300" height="300"></canvas>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	if(oTxt.getContext){
+		var ctx = oTxt.getContext('2d');
+
+		ctx.fillStyle = 'green';
+		ctx.lineWidth = 10;
+
+		ctx.moveTo(50,50);
+		ctx.lineTo(50,100);
+		ctx.lineTo(100,100);
+		ctx.closePath();
+		ctx.stroke();
+		
+
+		//清空路径
+		ctx.beginPath();
+		ctx.moveTo(150,150);
+		ctx.lineTo(150,200);
+		ctx.lineTo(200,200);
+		// ctx.closePath();
+		ctx.fill();
+		// ctx.stroke();
+	}
+
+</script>
+</html>

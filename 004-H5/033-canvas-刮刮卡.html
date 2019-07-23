@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"></meta>
+	<title>033-canvas-刮刮卡.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			height: 100%;
+			overflow: hidden;
+		}
+		#wrap,ul,ul>li{
+			height: 100%;
+		}
+		canvas{
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: 1s;
+		}
+		li{
+			background-image: url(image/xq.jpg);
+			background-size: 100% 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<canvas id="oc"></canvas>
+		<ul>
+			<li></li>
+		</ul>
+	</div>
+</body>
+<script>
+	window.onload = function(){
+		var oc = document.getElementById('oc');
+		oc.width = document.documentElement.clientWidth;
+		oc.height = document.documentElement.clientHeight;
+		if(oc.getContext){
+			var ctx = oc.getContext('2d');
+
+			var img = new Image();
+			img.src = 'image/timg.jpg';
+			img.onload = function(){
+				draw();
+			}
+			function draw(){
+				ctx.drawImage(img,0,0,oc.width,oc.height);
+				flag = 0;
+
+				oc.addEventListener('touchstart',function(ev){
+					var ev = ev||event;
+					var touchC = ev.changedTouches[0];
+
+					var x = touchC.clientX-oc.offsetLeft;
+					var y = touchC.clientY-oc.offsetTop;
+					ctx.save();
+					ctx.lineWidth = 30;
+					ctx.lineCap = 'round';
+					ctx.globalCompositeOperation = 'destination-out';
+					ctx.beginPath();
+					ctx.moveTo(x,y);
+					ctx.lineTo(x+1,y+1);
+					ctx.stroke();
+					ctx.restore();
+				});
+				oc.addEventListener('touchmove',function(ev){
+					var ev = ev||event;
+					var touchC = ev.changedTouches[0];
+
+					var x = touchC.clientX-oc.offsetLeft;
+					var y = touchC.clientY-oc.offsetTop;
+					ctx.save();
+					ctx.lineWidth = 30;
+					ctx.lineCap = 'round';
+					ctx.lineJoin = 'round';
+					ctx.globalCompositeOperation = 'destination-out';
+					// ctx.beginPath();
+					// ctx.moveTo(x,y);
+					ctx.lineTo(x,y);
+					ctx.stroke();
+					ctx.restore();
+				});
+				oc.addEventListener('touchend',function(ev){
+					var ev = ev||event;
+					var imgData = ctx.getImageData(0,0,oc.width,oc.height);
+					var allPx = imgData.width * imgData.height;
+					for(var i=0;i<allPx;i++){
+						if(imgData.data[4*i+3]===0){
+							flag++;
+						}
+					}
+					if(flag >= allPx/2){
+						oc.style.opacity = 0;
+					}
+				});
+				oc.addEventListener("transitionend",function(){
+					this.remove();
+				})
+			}
+		}
+	}
+	
+</script>
+</html>

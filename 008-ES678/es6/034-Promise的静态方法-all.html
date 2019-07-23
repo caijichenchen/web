@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>034-Promise的静态方法-all.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	const p1 = Promise.resolve('p1 Data');
+	const p2 = Promise.resolve('p2 Data');
+	const p3 = Promise.resolve('p3 Data');
+	const p3 = Promise.reject('p4 err');
+
+	const p = Promise.all([p1,p2,p3,p4]);
+
+	// console.log(p);
+	p.then(data=>{
+		console.log(data);
+	})
+	.catch(err=>{
+		console.log(err);
+	})
+	*/
+	const getImagePromise = (src)=>new Promise((resolve,reject)=>{
+		//有异步处理逻辑
+		const img = new Image();
+		img.onload = function(){
+			resolve(src+' img loaded success');
+		}
+		img.onerror = function(){
+			reject(src+' img loaded error');
+		}
+		img.src = src
+	})
+	const promise = ['../img/timg.jpg','../img/timg.jpg','../img/timg.jpg'].map(src=>getImagePromise(src))
+	// console.log(promise);
+	const p = Promise.all(promise);
+	console.log(p);
+	p
+	.then(data=>{
+		console.log(data);
+	})
+	.catch(err=>{
+		console.log(err);
+	})
+</script>
+</html>

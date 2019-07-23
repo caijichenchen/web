@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>044-基于原型的面向对象.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	var age = 20;
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+		this.init = function(){
+			console.log('init');
+		}
+		sayHello=function(){
+			console.log('haha');
+		}
+		return this;
+	}
+	Person.prototype.sayName = function(){
+		console.log(this.name);
+	}
+	Person.prototype.sayAge = function(){
+		console.log(this.age);
+	}
+	Person.sayHello = function(){
+		console.log("hello");
+	}
+	var p1 = new Person('tom',18);
+	console.log(p1);
+	p1.sayName();
+	p1.sayAge();
+	Person.sayHello();
+	Person().sayHello();
+	console.log(window);
+	// p1.sayHello();
+	// p1.init();
+
+	function Student(name,age,major){
+		Person.call(this,name,age);
+		this.major = major;
+	}
+	Student.prototype = Object.create(Person.prototype);
+	Student.prototype.sayMajor = function(){
+		console.log(this.major);
+	}
+	var s1 = new Student('leo',20,'Computer');
+	console.log(s1);
+	s1.sayName();
+	s1.sayMajor();
+	s1.init();
+	*/
+	var length = 10;
+	function aa(){
+		console.log(this.length);
+	}
+	var object = {
+		length:5,
+		mode:function(fn){
+			console.log(length);
+			// fn();
+		}
+	}
+	object.mode(aa);
+</script>
+</html>

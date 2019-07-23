@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.box1 {
+  width: 100px;
+  height: 60px;
+  background-color: #ff0000;
+}
+.box2 {
+  /*继承Box1样式*/
+  width: 100px;
+  height: 60px;
+  background-color: #ff0000;
+  margin-top: 10px;
+}
+.box3 {
+  /*继承Box1样式*/
+  width: 100px;
+  height: 60px;
+  background-color: #ff0000;
+  margin-top: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.box4 {
+  width: 100px;
+  height: 60px;
+  background-color: #ff0000;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+body {
+  background-color: #fff;
+}
+/*
+.triangle{
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	border-style: solid;
+	border-width: 20px;
+	border-color:red transparent transparent transparent;
+}
+
+.triangle(top){
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	border-style: solid;
+	border-width: 20px;
+	border-color: red transparent transparent transparent;
+}
+*/
+.box5 {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  border-style: solid;
+  border-width: 40px;
+  border-color: transparent transparent transparent #0000ff;
+}
+ul {
+  width: 600px;
+  margin: 100px auto;
+  list-style: none;
+}
+ul li {
+  height: 30px;
+  line-height: 30px;
+  width: 100%;
+}
+ul li span {
+  float: left;
+}
+ul li a {
+  float: right;
+}
+ul li:hover {
+  background-color: #ff0000;
+}
+p {
+  font-size: 5px;
+}
+/*
+p{
+	~'.cale(10px)'
+}
+*/
+.box6 {
+  width: 100px;
+  height: 100px;
+  background-color: #ff0000;
+}

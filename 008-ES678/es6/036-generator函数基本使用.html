@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>036-generator函数基本使用.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function * gen(){
+		console.log(11);
+		//会断掉，返回值时data1
+		yield 'data1';
+
+		console.log(22);
+		yield
+
+		return 'data';
+	}
+	console.log(33);
+	// gen();
+	// console.log(gen());
+	const g = gen();
+	console.log(g.next());
+	console.log(g.next());
+	console.log(g.next());
+</script>
+</html>

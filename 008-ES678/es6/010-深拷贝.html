@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-深拷贝.html</title>
+</head>
+<body>
+	
+</body>
+<script src="../js/jquery-1.12.4.js"></script>
+<script>
+	var obj = {
+		name:'tom',
+		age:18,
+		friend:{
+			name:'leo'
+		},
+		pets:[
+			'Cat','Dog'
+		]
+	}
+	/*
+	//循环遍历对象
+	const obj1 = {};
+	for(let key in obj){
+		obj1[key] = obj[key]
+	}
+	obj1.name = 'peter';
+	obj1.friend.name = 'mike';
+	obj1.pets.push('tigger');
+	console.log(obj);
+	console.log(obj1);
+	*/
+	function getDataType(data){
+		// return typeof data;
+		if(data instanceof Array){
+			return 'array';
+		}
+		else if(data instanceof Object){
+			return 'object';
+		}
+	}
+	// console.log(getDataType({}));
+	function deepCopy(data){
+		const type = getDataType(data);
+		let result;
+		if(type == 'array'){
+			result = [];
+		}
+		else if(type == 'object'){
+			result = {};
+		}else{
+			return data;
+		}
+
+		for(let key in data){
+			let val = data[key];
+			let valType = getDataType(val);
+			if(valType == 'array' || valType == 'object'){
+				result[key] = deepCopy(val);
+			}else{
+				result[key] = val;
+			}
+		}
+		return result;
+	}
+	const obj1 = deepCopy(obj);
+	obj1.name = 'peter';
+	obj1.friend.name = 'mike';
+	obj1.pets.push('tigger');
+	console.log(obj);
+	console.log(obj1);
+	/*
+	const obj1 = JSON.parse(JSON.stringify(obj));
+	obj1.name = 'peter';
+	obj1.friend.name = 'mike';
+	obj1.pets.push('tigger');
+	console.log(obj);
+	console.log(obj1);
+	
+	const obj1 = $.extend(true,{},obj);
+	obj1.name = 'peter';
+	obj1.friend.name = 'mike';
+	obj1.pets.push('tigger');
+	console.log(obj);
+	console.log(obj1);
+	*/
+</script>
+</html>

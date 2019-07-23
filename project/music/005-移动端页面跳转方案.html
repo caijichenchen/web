@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-移动端页面跳转方案.html</title>
+</head>
+<body>
+	<a href="http://www.baidu.com">跳转</a>
+</body>
+<script>
+	window.onload = function(){
+		document.addEventListener('touchstart',function(ev){
+			ev=ev||event;
+			ev.preventDefault();
+		})
+		var aA = document.querySelectorAll('a');
+		for(let i = 0;i<aA.length;i++){
+			//移动端跳转方案解决误触
+			aA[i].addEventListener('touchstart',function(){
+				this.moved = false;
+			})
+			aA[i].addEventListener('touchmove',function(){
+				this.moved = true;
+			})
+			aA[i].addEventListener('touchend',function(){
+				if(!this.moved){
+					location.href = this.href;
+				}
+			})
+		}
+	}
+</script>
+</html>

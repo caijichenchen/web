@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>037-generator函数的next方法参数.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function * gen(x){
+		console.log(x);
+
+		const y = yield (x+10);
+		console.log(y);
+
+		const z = yield (y+20);
+		console.log(z);
+
+		return (x+y+z);
+	}
+	// gen();
+	// console.log(gen());
+	const g = gen(5);
+	//next方法的参数代表上一个yield表达式的返回值
+	/*
+	console.log(g.next());//15 false
+	console.log(g.next());//NaN false
+	console.log(g.next());//NaN true
+	
+	const data1 = g.next();
+	console.log(data1);
+	const data2 = g.next(data1.value);
+	console.log(data2);
+	const data3 = g.next(data2.value)
+	console.log(data3);
+	*/
+	console.log(g.next(20));//15 false
+	console.log(g.next(30));//50 false
+	console.log(g.next(80));//115 true
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-canvas-飞鸟效果.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #ccc;
+		}
+		#txt{
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			margin:auto;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="txt" width="500" height="500"></canvas>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	oTxt.width = document.documentElement.clientWidth;
+	oTxt.height = document.documentElement.clientHeight;
+	if(oTxt.getContext){
+		var ctx = oTxt.getContext('2d');
+		var flag = 0;
+		var value = 0;
+		setInterval(function(){
+			ctx.clearRect(0,0,oTxt.width,oTxt.height);
+			flag++;
+			value+=10;
+			if(flag == 6){
+				flag = 1;
+			}
+			var img = new Image();
+			img.src = 'image/'+flag+'.png';
+			img.onload = function(){
+				draw(this);
+			}
+			if(value >= oTxt.width-img.width){
+				value = oTxt.width-img.width;
+			}
+		},100)
+		function draw(img){
+			ctx.drawImage(img,value,0);
+		}
+	}
+
+</script>
+</html>

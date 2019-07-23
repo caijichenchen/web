@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>042-async-fn-sequence.html</title>
+</head>
+<body>
+	
+</body>
+<script src="../js/jquery-1.12.4.js"></script>
+<script>
+	const getAjaxPromise = (url,type='get',data='')=>new Promise((resolve,reject)=>{
+		$.ajax({
+			url:url,
+			type:type,
+			data:data,
+			dataType:'json'
+		})
+		.done(function(data){
+			resolve(data)
+		})
+		.fail(function(){
+			reject('err')
+		})
+	})
+
+	//模拟：指定用户->获取用户信息->根据用户信息中的订单号再获取订单信息
+	async function fn(username){
+		const user = await getAjaxPromise('../data/'+username+'.json');
+		console.log(user);
+		//根据用户信息中的订单号再获取订单信息
+		const order = await getAjaxPromise('../data/'+user.orderNo+'.json');
+		console.log(order);
+
+		return order
+	}
+	fn('a')
+	.then(data=>{
+		console.log(data);
+	})
+
+	//模拟：获取用户A和用户B的信息
+	async function getUser(){
+		/*
+		const userA = await getAjaxPromise('../data/a.json');
+		const userB = await getAjaxPromise('../data/b.json');
+		*/
+		const promiseA = getAjaxPromise('../data/a.json');
+		const promiseB = getAjaxPromise('../data/b.json');
+		const userA = await promiseA;
+		const userB = await promiseB;
+
+		return [userA,userB]
+	}
+	
+	getUser()
+	.then(data=>{
+		console.log(data);
+	})
+	
+</script>
+</html>

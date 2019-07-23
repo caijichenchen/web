@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-数组结构解析.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	let [a,b,c] = [1,2,3];
+	console.log(a,b,c);
+
+	let [a,[b,c],d] = [1,[2,3],4];
+	console.log(a,b,c,d);
+	//没有对应的位置信息undefined
+	let [a,b,c] = [1,2];
+	console.log(a,b,c);
+	*/
+	// let [a,b,c=5] = [1,2,3];
+	//右边不是数组会报错
+	let [a,b,c] = [1,2,3]
+	//赋值为5情况
+	// let [a,b,c=5] = [1,2];
+	// let [a,b,c=5] = [1,2,undefined];
+	console.log(a,b,c);
+</script>
+</html>

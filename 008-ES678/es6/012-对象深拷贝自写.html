@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-对象深拷贝自写.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function getDataType(data){
+		if(data instanceof 'Array'){
+			return 'array';
+		}
+		else if(data instanceof 'Object'){
+			return 'object';
+		}
+	}
+	function deepCopy(data){
+		const type = getDataType(data);
+		let result;
+		if(type == 'array'){
+			result = [];
+		}
+		else if(type == 'object'){
+			result = {};
+		}else{
+			return data;
+		}
+
+		for(let key in data){
+			var val = data[key];
+			var valType = getDataType(val);
+			if(valType == 'array' || valType == 'object'){
+				result[key] = deepCopy(val);
+			}else{
+				result[key] = val;
+			}
+		}
+		return result;
+	}
+</script>
+</html>

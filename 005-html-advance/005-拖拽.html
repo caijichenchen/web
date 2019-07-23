@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-拖拽.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#father{
+			width: 500px;
+			height: 500px;
+			background-color: #ccc;
+		}
+		#son{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="father"></div>
+	<div id="son" draggable=true></div>
+</body>
+<script>
+	var oF = document.getElementById('father');
+	var oS = document.getElementById('son');
+	oF.ondrop = function(){
+		this.append(oS);
+	}
+	oF.ondragover = function(ev){
+		// ev.preventDefault();
+		return false;
+	}
+</script>
+</html>

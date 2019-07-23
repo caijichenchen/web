@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027-Promise的then方法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//当new promise时，里面的回调函数会立即执行
+	const promise = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			// resolve('ok')
+			reject('error')
+		},0)
+	});
+	/*
+	//promise的then方法返回一个新的promise对象
+	const p1 = promise
+	.then((data)=>{
+		console.log(data);
+		return data+' good'
+	})
+	// console.log(p1);
+	// console.log(p1 == promise);
+	p1.
+	then((data)=>{
+		console.log(data);
+	})
+	
+	promise.
+	then((data)=>{
+		return data+' good'
+	})
+	.then((data)=>{
+		console.log(data);
+	})
+	*/
+	let p2;
+	const p1 = promise
+	.then((data)=>{
+		p2 = new Promise((resolve,reject)=>{
+			resolve('good')
+		})
+		return p2;
+	})
+	.catch(err=>{
+		console.log(err);
+	})
+	p1.
+	then((data)=>{
+		console.log(data);
+		console.log(p1);
+		console.log(p2);
+		// console.log(p1==p2);
+	})
+
+	//promsie的then方法无论返回的是否是promise对象,then方法都会返回一个promise对象
+	//新的promise对象的then方法的值是上一个promise then方法的返回值,如果是具体的数据,返回值就是数据,如果是promsie,返回时就是promsie成功时的对象
+
+
+
+
+
+</script>
+</html>

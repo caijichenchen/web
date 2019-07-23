@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-数组的扩展运算.html</title>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+<script>
+	/*
+	var arr = [1,2,3];
+	console.log(arr);
+	console.log(...arr);
+	//把数组转换成参数列表传进去
+	function sum(n1,n2){
+		return n1+n2;
+	}
+	var arr1 = [3,4];
+	console.log(sum(1,2));
+	console.log(sum(...arr1));
+	
+	function sum(...arr){
+		var result = 0;
+		for(let i = 0,len=arr.length;i<len;i++){
+			result += arr[i];
+		}
+		return result;
+	}
+	console.log(sum(1,2,3,4));
+	
+	const arr = [1,2,3];
+	console.log(Math.max.apply(null,arr));
+	console.log(Math.max(...arr));
+	
+	//深拷贝
+	const arr = [1,2,3];
+	const arr1 = arr.concat();
+	arr1.push(88);
+	console.log(arr);
+	console.log(arr1);
+	
+	const arr = [1,2,3];
+	const arr1 = arr.slice();
+	arr1.push(88);
+	console.log(arr);
+	console.log(arr1);
+	
+	const arr = [1,2,3];
+	const arr1 = [...arr];
+	arr1.push(88);
+	console.log(arr);
+	console.log(arr1);
+	*/
+	var aLi = document.querySelectorAll('li');
+	const arr = [1,2,3];
+	console.log(arr);
+	console.log(aLi);
+	console.log([...aLi]);
+</script>
+</html>

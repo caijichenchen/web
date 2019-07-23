@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>045-class面向对象.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	class Person{
+		constructor(name,age){
+			this.name = name;
+			this.age = age
+		}
+		sabyName(){
+			console.log(this.name);
+		}
+		static sayHi(){
+			console.log('hi');
+		}
+	}
+
+	const person = new Person('tom',18);
+	console.log(person);
+	person.sabyName();
+	Person.sayHi();
+	// person.sayHi();
+
+	class Student extends Person{
+		constructor(name,age,major){
+			//调用父类的constructor
+			super(name,age);
+			this.major = major
+		}
+		sayMajor(){
+			console.log(this.major);
+		}
+	}
+
+	const student = new Student('leo',16,'Computer');
+	console.log(student);
+	student.sabyName();
+	student.sayMajor();
+</script>
+</html>

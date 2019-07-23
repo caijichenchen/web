@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-定义变量.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	//var定义可以重新赋值 let不能重新定义赋值
+	var a = 1;
+	var a = 2;
+	console.log("var:",a);
+	console.log("var:",window.a);
+
+	let b = 1;
+	// let b = 2;
+	console.log("let:",b);
+	*/
+	/*
+	//var有声明提升 let没有
+	console.log("var:",a);
+	console.log("var:",b);
+	var a = 1;
+	let b = 2;
+	*/
+	//var定义的变量在函数作用域中可以使用,let定义的变量只能在定义的代码块内使用
+	if(true){
+		var a = 1;
+	}
+	console.log(a);
+	if(true){
+		let b = 2;
+	}
+	console.log(b);
+	//let可以先定义再初始化
+	let c;
+	c=1;
+	console.log(c);
+</script>
+</html>

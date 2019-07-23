@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-函数设置默认参数.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function show(name='tom',age=18){
+		console.log(name,age);
+	}
+	show('amy');
+	let i = 1;
+	function sum(x=++i){
+		console.log(x);
+	}
+	sum();
+	function request(url,{method,data}={}){
+		console.log(url,method,data);
+	}
+	request("www.baidu.com",{method:'POST',data:'id=101'});
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>035-canvas-事件.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #ccc;
+		}
+		#txt{
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			margin:auto;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="txt" width="500" height="500"></canvas>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	if(oTxt.getContext){
+		var ctx = oTxt.getContext('2d');
+		ctx.save();
+		ctx.beginPath();
+		ctx.arc(50,50,50,0,360);
+		ctx.fill();
+		ctx.beginPath();
+		ctx.arc(150,150,50,0,360);
+		ctx.fill();
+		ctx.restore();
+
+		oTxt.onclick = function(ev){
+			var ev = ev||event;
+			var x = ev.clientX-oTxt.offsetLeft;
+			var y = ev.clientY-oTxt.offsetTop;
+			if(ctx.isPointInPath(x,y)){
+				alert("hello");
+			}
+		}
+	}
+</script>
+</html>

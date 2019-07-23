@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-无缝滑屏.html</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			height: 100%;
+			overflow: hidden;
+		}
+		.carousel-wrap .list{
+			list-style: none;
+			overflow: hidden;
+			position: absolute;
+		}
+		.carousel-wrap .list li a,
+		.carousel-wrap .list li a img{
+			display: block;
+		}
+		.carousel-wrap .list li a img{
+			width: 100%;
+		}
+		.carousel-wrap .list li{
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="carousel-wrap">
+			<!-- <ul class="list">
+				<li>
+					<a href="javascript:;">
+						<img src="img/01.jpg" alt="">
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<img src="img/02.jpg" alt="">
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<img src="img/03.jpg" alt="">
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<img src="img/04.jpg" alt="">
+					</a>
+				</li>
+			</ul> -->
+		</div>
+	</div>
+</body>
+<script>
+	window.onload = function(){
+		document.addEventListener('touchstart',function(ev){
+			var ev = ev || event;
+			ev.preventDefault();
+		})
+		var arr = ["img/01.jpg","img/02.jpg","img/03.jpg","img/04.jpg"];
+		function carousel(arr){
+			var carouselWarp = document.querySelector('.carousel-wrap');
+			if(carouselWarp){
+				var oUl = document.createElement('ul');
+				var styleNode = document.createElement('style');
+				oUl.className = 'list';
+				for(var i = 0;i<arr.length;i++){
+					oUl.innerHTML = '<li><a href="javascript:;"><img src="'+arr[i]+'" alt=""></a></li>';
+				}
+				styleNode.innerHTML = '.carousel-wrap .list li{width: '+(1/arr.length*100)+'%;}.carousel-wrap .list{width:'+arr.length+'00%}';
+				carouselWarp.appendChild(oUl);
+				document.head.appendChild(styleNode);
+				var imgNodes = document.querySelector('.carousel-wrap>.list>li>a>img');
+				setTimeout(function(){
+					debugger
+					carouselWarp.style.height = imgNodes.offsetHeight + 'px';
+				},100)
+			}
+		}
+		carousel(arr);
+	}
+	
+</script>
+</html>

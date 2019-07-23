@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-拖拽传递数据.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#container{
+			width: 400px;
+			height: 400px;
+			background-color: gray;
+		}
+		#target{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+	<div id="target" draggable=true></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('#target')
+		.on('dragstart',function(ev){
+			// console.log($(this).attr('id'));
+			console.log(ev.target.id);
+			var TargetId = ev.target.id;
+			//发送数据
+			ev.originalEvent.dataTransfer.setData('TargetId',TargetId);
+		})
+		$('#container')
+		.on('drop',function(ev){
+			///接受数据
+			var getId = ev.originalEvent.dataTransfer.getData('TargetId');
+			console.log(getId);
+			//当放置被拖动元素时触发
+			// console.log("#container:::drop");
+			$(this).append($('#'+getId));
+		})
+		.on('dragover',function(ev){
+			// 被拖动元素正在到放置到容器时触发
+			ev.preventDefault();
+		})
+	})
+</script>
+</html>

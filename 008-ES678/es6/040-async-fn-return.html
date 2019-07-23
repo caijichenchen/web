@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>040-async-fn-return.html</title>
+</head>
+<body>
+	
+</body>
+<script src="../js/jquery-1.12.4.js"></script>
+<script>
+	/*
+	async function fn(){
+		return 'result data';
+	}
+	fn()
+	.then(data=>{
+		console.log(data);
+	})
+	*/
+	let p1 = null;
+	async function fn(){
+		p1 = Promise.resolve('ok data');
+		//和then方法一样  返回的数据会作为then方法的参数
+		return p1;
+	}
+	const p2 = fn();
+
+	console.log("p1",p1);
+	console.log("p2",p2);
+	//返回值是一个promise   会作为then方法的参数
+	console.log("p1==p2",p1==p2);
+
+	p2
+	.then(data=>{
+		console.log(data);
+	})
+</script>
+</html>

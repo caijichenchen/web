@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-弹性布局练习三.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.header{
+			background-color: red;
+		}
+		.left{
+			background-color: blue;
+		}
+		.middle{
+			background-color: #fff;
+		}
+		.right{
+			background-color: green;
+		}
+		.footer{
+			background-color: pink;
+		}
+		body{
+			display: flex;
+			flex-direction: column;
+			height: 100vh;
+		}
+		.header,.footer{
+			height: 10vh;
+		}
+		.nav{
+			display: flex;
+			/*align-items: flex-start;*/
+			/*height: 80vh;*/
+			flex-grow: 1;
+		}
+		.left,.right{
+			flex: 0 0 10vw;
+		}
+		.middle{
+			flex-grow: 1;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">header</div>
+	<div class="nav">
+		<div class="left">left</div>
+		<div class="middle">middle</div>
+		<div class="right">right</div>
+	</div>
+	<div class="footer">footer</div>
+</body>
+</html>

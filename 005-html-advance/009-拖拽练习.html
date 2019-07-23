@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-拖拽练习.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#target-form{
+			width: 600px;
+			height: 600px;
+			margin: 100px auto;
+			/*border: 1px solid #000;*/
+		}
+		.box{
+			width: 300px;
+			height: 600px;
+			float: left;
+		}
+		#target-list{
+			height: 600px;
+			margin-left: 300px;
+			border-left: 1px solid #000;
+		}
+		.target{
+			height: 50px;
+			box-sizing: border-box;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="target-form">
+		<div class="box">
+			<h1>调查问卷</h1>
+		</div>
+		<div id="target-list">
+			<div class="target" draggable=true>
+				<label >姓名:</label>
+				<input type="text">
+			</div>
+			<div class="target" draggable=true>
+				<label >年龄:</label>
+				<input type="text">
+			</div>
+			<div class="target" draggable=true>
+				<label >性别:</label>
+				<input type="text">
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		var dom;
+		$('#target-list')
+		.on('dragstart','.target',function(){
+			console.log(this);
+			console.log(11);
+			dom = this;
+		})
+		$('.box')
+		.on('drop',function(){
+			$(this).append($.clone(dom));
+		})
+		.on('dragover',function(ev){
+			ev.preventDefault();
+		})
+	})
+</script>
+</html>

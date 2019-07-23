@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-set的遍历.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	const s = new Set([1,5,3,4]);
+	// console.log(s.keys());
+	/*
+	for(let key of s.keys()){
+		console.log(key);
+	}
+	
+	for(let value of s.values()){
+		console.log(value);
+	}
+	
+	for(let entries of s.entries()){
+		console.log(entries);
+	}
+	*/
+	s.forEach(function(value,key){
+		console.log(value,key);
+	})
+</script>
+</html>

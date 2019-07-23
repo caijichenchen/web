@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-对象结构解析.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let options = {
+		time : 500,
+		mode : 'js'
+	}
+	/*
+	console.log(options.time);
+	console.log(options.mode);
+	
+	let time = options.time;
+	let mode = options.mode;
+	console.log(time,mode);
+	
+	let {time:time1,mode:mode1} = options;
+	console.log(time1,mode1);
+	
+	let {time,mode} = options;
+	console.log(time,mode);
+	*/
+	let{time=300,mode,age=18} = options;
+	// console.log(time,mode,age);
+	console.log(time);
+	console.log(mode);
+	console.log(age);
+</script>
+</html>

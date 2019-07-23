@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>047-ES8新增语法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	const {
+		keys,
+		entries,
+		values,
+		getOwnPropertyDescriptors,
+		assign,
+		is
+	}=Object
+
+	Object.prototype.test = 'test';
+	Object.defineProperty
+
+	const obj = {
+		name:'tom',
+		age:18,
+		friends:{
+			name:"jack"
+		}
+	}
+
+	console.log(keys(obj));
+
+	const result =assign({},obj);
+	//只能拷贝可遍历的
+	result.name = 'leo';
+	console.log(result);
+	console.log(result == obj);
+
+	const DEFAULT={
+		js:true,
+		interval:500
+	}
+	const options={
+		js:false
+	}
+	const target = {};
+	const result1 = assign(target,DEFAULT,options);
+	console.log(target);
+	console.log(DEFAULT);
+	console.log(options);
+	console.log(result1);
+	console.log(result1==target);
+
+	console.log(+0===-0);
+	console.log(is(+0,-0));
+	console.log(NaN === NaN);
+	console.log(is(NaN,NaN));
+</script>
+</html>

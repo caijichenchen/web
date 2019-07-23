@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>029-Promise的finally方法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//当new promise时，里面的回调函数会立即执行
+	const promise = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			resolve('ok')
+			// reject('error')
+		},0)
+	});
+
+	promise
+	.then(data=>{
+		console.log("succuss data:",data);
+	})
+	.catch(err=>{
+		console.log("err data:",err);
+	})
+	.finally(()=>{
+		console.log("finally..");
+	})
+
+
+
+
+</script>
+</html>

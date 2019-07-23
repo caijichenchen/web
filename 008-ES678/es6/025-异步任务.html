@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>025-异步任务.html</title>
+</head>
+<body>
+	
+</body>
+<script src="../js/jquery-1.12.4.js"></script>
+<script>
+	//1.Ajax
+	/*
+	const data=$.get('https://api.github.com/users/caijichenchen');
+	console.log(data);
+	*/
+	
+	$.get('https://api.github.com/users/caijichenchen',(data)=>{
+		console.log(data);
+	})
+	console.log('after get ajax data');
+	
+	const img = new Image();
+	img.onload = function(){
+		console.log('img loaded');
+	}
+	img.onerror = function(){
+		console.log('img error');
+	}
+	img.src = '../img/timg.jpg';
+	console.log('after get img');
+
+	setTimeout(()=>{
+		console.log('timer');
+	},0)
+	console.log();
+</script>
+</html>

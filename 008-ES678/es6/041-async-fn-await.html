@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>041-async-fn-await.html</title>
+</head>
+<body>
+	
+</body>
+<script src="../js/jquery-1.12.4.js"></script>
+<script>
+	
+	async function fn(){
+		//告诉下面的程序需要等待
+		const data1 = await 'data1';
+		console.log("get data::",data1);
+		console.log("do something..");
+
+		return 'result data'
+	}
+	fn()
+	.then(data=>{
+		console.log(data);
+	})
+	
+	const promise = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			resolve('success data');
+		},200)
+	})
+	/*
+	async function fn(){
+		const data1 = await promise;
+		console.log("get data::",data1);
+		console.log("do something..");
+
+		return 'result data'
+	}
+	fn()
+	.then(data=>{
+		console.log(data);
+	})
+	
+	const promise = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			// resolve('success data');
+			reject('error data')
+		},200)
+	})
+
+	async function fn(){
+		try{
+			const data1 = await promise;
+			console.log("get data::",data1);
+			console.log("do something..");
+		}catch(err){
+			console.log("hanel error",err);
+		}
+
+		return 'result data'
+	}
+	fn()
+	.then(data=>{
+		console.log(data);
+	})
+	*/
+</script>
+</html>

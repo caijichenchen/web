@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>039-generator函数处理ajax.html</title>
+</head>
+<body>
+	
+</body>
+<script src="../js/jquery-1.12.4.js"></script>
+<script>
+	/*
+	const getAjaxPromise = (url,type='get',data='')=>new Promise((resolve,reject)=>{
+        //处理异步请求(ajax)
+        $.ajax({
+            url:url,
+            type:type,
+            data:data,
+            success:(data)=>{
+                resolve(data)
+            },
+            error:(jqXhr,statusMsg)=>{
+                reject(statusMsg)
+            }
+        })
+    })
+    */
+  
+	const getAjaxPromise = (url,type='get',data='')=>new Promise((resolve,reject)=>{
+		$.ajax({
+			url:url,
+			type:type,
+			data:data,
+		})
+		.done(function(data){
+			resolve(data)
+		})
+		.fail(function(){
+			reject('err')
+		})
+	})
+    
+	function * gen(url){
+		const data1 = yield getAjaxPromise(url);
+		const data2 = yield getAjaxPromise(data1);
+		const data3 = yield getAjaxPromise(data2);
+
+		console.log("use data",data3);
+	}
+
+	const g = gen('https://api.github.com/users/kuazhu');
+
+	// console.log(g.next());
+	//执行函数(类似普通函数)拿到value中的promise对象
+	g.next().value
+	.then(data=>{
+		//数据对象
+		console.log(data);
+		console.log(data.followers_url);
+		//data1 = g.next(data.followers_url).value;
+		return g.next(data.followers_url).value;
+	})
+	.then(data=>{
+		console.log(data);
+		//data2 = g.next(data[0].followers_url).value;
+		return g.next(data[0].followers_url).value;
+	})
+	.then(data=>{
+		g.next(data);
+	})
+</script>
+</html>

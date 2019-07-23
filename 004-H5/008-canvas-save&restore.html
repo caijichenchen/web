@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-canvas-save&restore.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#txt{
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			margin:auto;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="txt" width="300" height="300"></canvas>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	if(oTxt.getContext){
+		var ctx = oTxt.getContext('2d');
+
+		ctx.save();
+		ctx.fillStyle = 'pink';
+		ctx.save();
+		ctx.fillStyle = 'blue';
+		
+		ctx.beginPath();
+		ctx.restore();
+		ctx.fillRect(50,50,100,100);
+		// ctx.restore();
+	}
+
+</script>
+</html>

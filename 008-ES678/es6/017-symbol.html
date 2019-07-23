@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-symbol.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let s1 = Symbol('tom');
+	let s2 = Symbol('tom');
+	console.log(s1==s2);
+	let obj = {
+		name:'leo',
+		[s1]:'tom',
+		[s2]:'amy'
+	}
+	console.log(obj);
+	console.log(obj[s1]);
+	console.log(obj[s2]);
+	let keys = Reflect.ownKeys(obj);
+	for(let key in keys){
+		console.log(obj[keys[key]]);
+	}
+</script>
+</html>

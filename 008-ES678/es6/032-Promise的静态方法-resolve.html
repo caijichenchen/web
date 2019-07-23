@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032-Promise的静态方法-resolve.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	const p1 = Promise.resolve();
+	console.log("p1",p1);
+	const p2 = Promise.resolve(p1);
+	console.log("p2",p2);
+	console.log("p1==p2",p1==p2);
+
+	const obj = {
+		then:function(){
+			console.log("then fn of obj");
+		}
+	}
+	const p3 = Promise.resolve(obj);
+	console.log("p3",p3);
+
+	const obj2 = {
+		noThen:function(){
+			console.log("noThen");
+		}
+	}
+	const p4 = Promise.resolve(obj2);
+	console.log("p4",p4);
+
+	const p5 = Promise.resolve("obj2");
+	console.log("p5",p5);
+</script>
+</html>

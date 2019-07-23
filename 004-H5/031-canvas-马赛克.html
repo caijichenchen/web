@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>031-canvas-马赛克.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #ccc;
+		}
+		#txt{
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			margin:auto;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="txt"></canvas>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	if(oTxt.getContext){
+		var ctx = oTxt.getContext('2d');
+		var img = new Image();
+		img.src = 'image/tim.jpg';
+		img.onload = function(){
+			oTxt.width = img.width*2;
+			oTxt.height = img.height;
+			draw();
+		}
+		function draw(){
+			ctx.drawImage(img,0,0);
+
+			var oldImg = ctx.getImageData(0,0,img.width,img.height);
+			var newImg = ctx.createImageData(img.width,img.height);
+			//马赛克
+			//1.定义一个马赛克矩形
+			var size = 5;
+			//2.在矩形中随机拿出一个单像素的信息
+			//3.整个矩形的信息调成单像素信息
+			for(var i=0;i<oldImg.data.width/size;i++){
+				for(var j=0;j<oldImg.data.height/size;j++){
+					var color = getPx(oldImg,i*size+Math.floor(Math.random()*size),j*size+Math.floor(Math.random()*size));
+
+					for(var a=0;a<size;a++){
+						for(var b=0;b<size;b++){
+							setPx(newImg,i*size+a,j*size+b,color);
+						}
+					}
+				}
+			}
+			ctx.putImageData(newImg,img.width,0);
+		}
+		function getPx(imgData,x,y){
+			var color = [];
+			var w = oTxt.width;
+			var h = oTxt.height;
+			//r
+			color[0]=imgData.data[(y*w+x)*4];
+			//g
+			color[1]=imgData.data[(y*w+x)*4+1];
+			//b
+			color[2]=imgData.data[(y*w+x)*4+2];
+			//a
+			color[3]=imgData.data[(y*w+x)*4+3];
+
+			return color;
+		}
+		function setPx(imgData,x,y,color){
+			var data = imgData.data;
+			var w = oTxt.width;
+			var h = oTxt.height;
+			data[(y*w+x)*4]=color[0];
+			data[(y*w+x)*4+1]=color[1];
+			data[(y*w+x)*4+2]=color[2];
+			data[(y*w+x)*4+3]=color[3];
+		}
+	}
+	
+</script>
+</html>

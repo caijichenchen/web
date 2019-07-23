@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-cookies.html</title>
+</head>
+<body>
+	hello
+</body>
+<script>
+	// var oDate = new Date('2019-7-12 16:34:00').toUTCString();
+	/*
+	var oDate = new Date();
+	oDate.setDate(oDate.getDate() + 1);
+	document.cookie = "username=tom;Expires="+oDate;
+	*/
+	// document.cookie = "name=Leo;max-age=10";
+	//创建cookie
+	function setCookie(key,val,date){
+		var oDate = new Date();
+		oDate.setDate(oDate.getDate() + date);
+		document.cookie = key+"="+val+";Expires="+oDate;
+	}
+	setCookie('age','20',1)
+	setCookie('name','leo',1)
+	//获取cookie
+	function getCookie(age){
+		var str = document.cookie;
+		var arr = str.split(';');
+		console.log(arr);
+		for(var i = 0;i<arr.length;i++){
+			var arr1 = arr[i].split('=');
+			console.log(arr1);
+			if(arr1[0].trim() == age.trim()){
+				return arr1[1];
+				break;
+			}
+		}
+	}
+	console.log(getCookie('age'));
+	//移除cookie
+	function removeCookie(key){
+		setCookie(key,false,-1);
+	}
+	removeCookie('age');
+</script>
+</html>

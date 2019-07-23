@@ -1,0 +1,134 @@
+@c:red;
+*{
+	margin: 0;
+	padding: 0;
+}
+@w:100px;
+@h:60px;
+.box1{
+	width: @w;
+	height: @h;
+	background-color: @c;
+}
+.box2{
+	/*继承Box1样式*/
+	.box1;
+	margin-top: 10px;
+}
+//传参
+.border-r(@r){
+	-webkit-border-radius:@r;
+	-o-border-radius:@r;
+	-moz-border-radius:@r;
+	border-radius: @r;
+}
+.box3{
+	.box2;
+	.border-r(10px);
+}
+//传参默认值
+.border-rf(@r:10px){
+	border-radius:@r;
+}
+.box4{
+	.box1;
+	.border-rf(20px);
+	margin-bottom: 10px;
+}
+body{
+	background-color: #fff;
+}
+/*
+.triangle{
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	border-style: solid;
+	border-width: 20px;
+	border-color:red transparent transparent transparent;
+}
+
+.triangle(top){
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	border-style: solid;
+	border-width: 20px;
+	border-color: red transparent transparent transparent;
+}
+*/
+//匹配模式
+.triangle(@c_,@w,@c){
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	border-style: solid;
+}
+.triangle(top,@w,@c){
+	border-width: @w;
+	border-color: @c transparent transparent transparent;
+}
+.triangle(right,@w,@c){
+	border-width: @w;
+	border-color: transparent @c transparent transparent;
+}
+.triangle(bottom,@w,@c){
+	border-width: @w;
+	border-color: transparent transparent @c transparent;
+}
+.triangle(left,@w,@c){
+	border-width: @w;
+	border-color: transparent transparent transparent @c;
+}
+.box5{
+	.triangle(left,40px,blue);
+}
+//嵌套模式
+ul{
+	width: 600px;
+	margin: 100px auto;
+	list-style: none;
+	li{
+		height: 30px;
+		line-height: 30px;
+		width: 100%;
+		span{
+			float: left;
+		}
+		a{
+			float: right;
+		}
+		&:hover{
+			background-color: @c;
+		}
+	}
+}
+//运算.
+.cale-f(@val){
+	// font-size: @val + 10px;
+	// font-size: @val * 10px;
+	// font-size: @val - 8px;
+	font-size: @val / 2px;
+}
+p{
+	.cale-f(10px);
+}
+//避免编译
+/*
+p{
+	~'.cale(10px)'
+}
+*/
+//!important
+//混合参数
+.set(@attr,@val){
+	@{attr}:unit(@val/10,px);
+}
+.get(@attr,@val){
+	@{attr}:@val;
+}
+.box6{
+	.set(width,1000);
+	.set(height,1000);
+	.get(background-color,@c);
+}

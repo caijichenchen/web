@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>031-用promise处理ajax.html</title>
+</head>
+<body>
+	
+</body>
+<script src="../js/jquery-1.12.4.js"></script>
+<script>
+	//1.需要一个生成promise对象的函数
+	const getAjaxPromise = (url,type='get',data='')=>new Promise((resolve,reject)=>{
+		$.ajax({
+			url:url,
+			type:type,
+			data:data,
+		})
+		.done(function(data){
+			resolve(data)
+		})
+		.fail(function(){
+			reject('err')
+		})
+	})
+	//2.用函数生成promise
+	getAjaxPromise('https://api.github.com/users/caijichenchen')
+	.then(data=>{
+		console.log(data);
+		// return getAjaxPromise(data[0].followers_url);
+	})
+	.catch(err=>{
+		console.log(err);
+	})
+</script>
+</html>

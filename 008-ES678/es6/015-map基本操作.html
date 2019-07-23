@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-map基本操作.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	let obj = {};
+	let obj1 = {id:1001};
+	let obj2 = {id:1002};
+	// obj['name'] = 'tom';
+	obj[obj2]= 'tom'
+	console.log(obj);
+	*/
+	const m = new Map();
+	let obj1 = {id:1001};
+	let obj2 = {id:1002};
+	m.set('name','tom');
+	m.set('name','leo');
+	m.set(obj1,'hello');
+	m.set(obj2,'hi');
+	console.log(m.delete(obj2));
+	console.log(m.get(obj2));
+	console.log(m.has(obj2));
+	console.log(m);
+</script>
+</html>

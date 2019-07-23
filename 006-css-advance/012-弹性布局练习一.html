@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-弹性布局练习一.html</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+			box-sizing: border-box;
+			margin-top: 100px;
+			margin-left: auto;
+			margin-right: auto;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.father div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			border: 1px solid #000;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1"></div>
+		<div class="son2"></div>
+	</div>
+</body>
+</html>

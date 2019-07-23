@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-定义常量.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	var PI = 3.1415;
+	PI = 555;
+	console.log(PI);
+	//定义后不能再重新赋值,定义后值不能改变
+	const PI = 3.1415;
+	PI = 555;
+	console.log(PI);
+	
+	var PI;
+	PI = 3.14;
+	console.log(PI);
+	
+	//只能在定义的时候初始化
+	const PI;
+	PI = 3.14;
+	console.log(PI);
+	*/
+	//引用数据类型不可改变地址值,只能改变对象内容值
+	const obj = {
+		name : 'leo',
+		age:18
+	}
+	//重新赋值，改变地址值
+	/*
+	obj = {
+
+	}
+	*/
+	//不改变地址值改变对象内容
+	obj.name = 'tom';
+	console.log(obj);
+	//和let一样是块级作用域,没有声明提升
+	if(true){
+		const PI = 3.14
+	}
+	console.log(PI);
+	
+</script>
+</html>

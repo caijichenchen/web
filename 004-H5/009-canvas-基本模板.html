@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-canvas-基本模板.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#txt{
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			margin:auto;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="txt" width="300" height="300"></canvas>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	if(oTxt.getContext){
+		var ctx = oTxt.getContext('2d');
+
+		/*
+		1.save+restore成对出现，相当于一个作用域
+		2.路径容器、样式容器、样式栈
+		 2.1 路径容器
+		  * 每次调用路径api时，都会在路径容器做登记
+		    调用beginPath时会清空路径容器
+		 2.2 样式容器
+		   * 使用fillStyle时会在样式容器内覆盖掉上一次的颜色
+		   * 使用save方法时会将当前样式存入样式栈
+		   * 使用store方法时会调用样式栈的样式
+		 2.3 样式栈
+		   * 使用save方法时会将当前样式存入样式栈
+		   * 使用store方法时会调用样式栈的样式
+		*/
+
+		ctx.save();
+		ctx.beginPath();
+		ctx.restore();
+	}
+
+</script>
+</html>

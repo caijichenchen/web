@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027-canvas-文本水平垂直居中.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #ccc;
+		}
+		#txt{
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			margin:auto;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="txt" width="500" height="500"></canvas>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	if(oTxt.getContext){
+		var ctx = oTxt.getContext('2d');
+		ctx.fillStyle = 'red';
+		ctx.font = "40px sans-serif";
+		ctx.textBaseline = 'middle';
+		var w = ctx.measureText('hello world').width;
+		ctx.fillText("hello world",(oTxt.width-w)/2,(oTxt.height-40)/2);
+	}
+
+</script>
+</html>

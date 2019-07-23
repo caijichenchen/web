@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011-canvas-画圆.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #ccc;
+		}
+		#txt{
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			margin:auto;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="txt" width="500" height="500"></canvas>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	if(oTxt.getContext){
+		var ctx = oTxt.getContext('2d');
+		ctx.save();
+		ctx.beginPath();
+		/*
+		arc(x,y(圆心),radius,开始弧度,结束弧度,顺/逆时针(默认顺时针fasle))
+		*/
+		ctx.moveTo(100,100);
+		ctx.arc(100,100,50,0,90*Math.PI/180);
+		ctx.closePath();
+		ctx.stroke();
+		ctx.restore();
+	}
+
+</script>
+</html>

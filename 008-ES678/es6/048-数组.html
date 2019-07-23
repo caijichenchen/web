@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>048-数组.html</title>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script>
+	/*
+	const likeArr = {
+		0:'data1',
+		1:'data2',
+		length:2
+	}
+
+	console.log(likeArr);
+	console.log(Array.from(likeArr));
+
+	const aDiv = document.getElementsByTagName('div');
+	console.log(aDiv);
+	console.log(Array.from(aDiv));
+	console.log([...aDiv]);
+
+	function fn(){
+		console.log(arguments);
+		console.log(Array.from(arguments));
+	}
+	fn(11,22);
+	*/
+	const arr = [1,2,3,4];
+	//找到第一个符合条件的值,找不到就是undefined
+	console.log(arr.find((n)=>n>2));
+	//找到符合条件的下标,找不到返回-1
+	console.log(arr.findIndex((n)=>n>5));
+	//需要查找的项,开始查找的下标,找不到返回false,找到返回true
+	console.log(arr.includes(3,2));
+</script>
+</html>

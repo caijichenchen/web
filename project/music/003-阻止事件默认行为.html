@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-阻止事件默认行为.html</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			padding-top: 80px;
+			box-sizing: border-box;
+			text-align: center;
+			font-size: 30px;
+			width: 200px;
+			height: 200px;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">box</div>
+</body>
+<script>
+	var oBox = document.querySelector('.box');
+	oBox.addEventListener('touchstart',function(ev){
+		console.log('touchstart');
+		ev = ev||event;
+		ev.preventDefault();
+	})
+	oBox.addEventListener('touchmove',function(){
+		console.log('touchmove');
+	})
+	oBox.addEventListener('touchend',function(){
+		console.log('touchend');
+	})
+</script>
+</html>

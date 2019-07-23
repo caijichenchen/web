@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.loading{
+			width: 3px;
+			height: 20px;
+			background-color: #ff6700;
+			margin: 0 auto;
+			position: relative;
+			animation: sport 0.3s linear 0s alternate infinite;
+		}
+		.loading:after,.loading:before{
+			width: 3px;
+			height: 20px;
+			background-color: #ff6700;
+			position: absolute;
+			top: 0;
+			left: 0;
+			content: "";
+		}
+		.loading:after{
+			margin-left: -10px;
+			animation: sport 0.2s linear 0.2s alternate infinite;
+		}
+		.loading:before{
+			margin-left: 10px;
+			animation: sport 0.4s linear 0.3s alternate infinite;
+		}
+
+		@keyframes sport{
+			from{
+				transform: scale(1,0.5);
+				opacity: 0.3;
+			}
+			to{
+				transform: scale(1);
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="loading"></div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+html{color:#000;background:#FFF}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit}input,textarea,select{*font-size:100%}legend{color:#000}#yui3-css-stamp.cssreset{display:none}
+
+
+/*a{
+	text-decoration: none;
+	color: #b0b0b0;
+	font-size: 12px;
+	margin-left: 6px;
+}
+a:hover{
+	color: white;
+}
+.hd-sp{
+	color: #393d42;
+	font-size: 12px;
+}
+*/
+
+
+body{
+	font-size: 14px;
+}
+.container{
+	width: 1200px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.transition{
+	transition: all 0.5s;
+}
+
+/*浮动共通样式开始*/
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+
+.clearfix:after{
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix{
+	*zoom: 1;
+}
+/*浮动共通样式结束*/
+
+/*a链接共通样式开始*/
+a{
+	font-size: 12px;
+	text-decoration: none;
+	color: #4d555d;
+}
+a.link:hover{
+	color: #ea675a;
+}
+/*a链接共通样式结束*/
+
+/*下拉层共通部分开始*/
+.dropdown{
+	position: relative;
+}
+.dropdown-layer{
+	position: absolute;
+	display: none;
+}
+.dropdown-left{
+	left: 0;
+}
+.dropdown-right{
+	right: 0;
+}
+/*下拉层共通部分结束*/
+
+.dropdown-loading{
+	width: 32px;
+	height:32px;
+	margin:20px;
+	background-image: url(../image/images/loading.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+
+
+
+

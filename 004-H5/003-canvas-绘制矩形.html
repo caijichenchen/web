@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-canvas-绘制矩形.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#txt{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-top: -150px;
+			margin-left: -150px;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="txt" width="300" height="300"></canvas>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	if(oTxt.getContext){
+		var ctx = oTxt.getContext('2d');
+
+		//填充颜色
+		ctx.fillStyle = '#f69';
+		//边框颜色
+		ctx.strokeStyle = 'pink';
+		//边框大小
+		ctx.lineWidth = 50;
+		//圆角样式 只跟线有关系
+		// ctx.lineJoin = 'miter';
+		// ctx.lineJoin = 'round';
+		ctx.lineJoin = 'bevel';
+
+		//不能加单位
+		//填充的矩形
+		ctx.fillRect(0,0,100,100);
+		//带边框的矩形
+		ctx.strokeRect(100,100,100,100);
+		//叠一个矩形上去填充的是底色  不会重绘重排
+		ctx.clearRect(100,100,100,100);
+	}
+</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032-canvas-合成.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #ccc;
+		}
+		#txt{
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			margin:auto;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="txt" width="500" height="500"></canvas>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	if(oTxt.getContext){
+		var ctx = oTxt.getContext('2d');
+		//全局透明度设置
+		/*
+		ctx.fillStyle = 'red';
+		ctx.globalAlpha = 0.5;
+		ctx.fillRect(0,0,100,100);
+		ctx.fillRect(100,100,100,100);
+		*/
+		//两个图像叠加
+		ctx.fillStyle = 'pink';
+		ctx.fillRect(50,50,100,100);
+		//新图像（源）已经绘制过的（目标）
+		//默认
+		// ctx.globalCompositeOperation = 'source-over';
+		//留下源与目标重叠部分
+		// ctx.globalCompositeOperation = 'source-in';
+		//留下源超出目标部分
+		// ctx.globalCompositeOperation = 'source-out';
+		//砍掉源溢出部分
+		// ctx.globalCompositeOperation = 'source-atop';
+
+		//目标在上面
+		// ctx.globalCompositeOperation = 'destination-over';
+		//留下重叠部分
+		// ctx.globalCompositeOperation = 'destination-in';
+		//目标超过源部分
+		// ctx.globalCompositeOperation = 'destination-out';
+		//砍掉目标溢出部分
+		ctx.globalCompositeOperation = 'destination-atop';
+		ctx.fillStyle = 'blue';
+		ctx.fillRect(100,100,100,100);
+	}
+</script>
+</html>

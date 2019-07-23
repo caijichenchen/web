@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>030-canvas-单像素操作.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #ccc;
+		}
+		#txt{
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			margin:auto;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="txt" width="500" height="500"></canvas>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	if(oTxt.getContext){
+		var ctx = oTxt.getContext('2d');
+		ctx.save();
+		ctx.fillStyle = 'pink';
+		ctx.beginPath();
+		ctx.fillRect(50,50,100,100);
+		ctx.restore();
+
+		var imageData = ctx.getImageData(0,0,oTxt.width,oTxt.height);
+
+		setPx(imageData,75,75,[0,0,0,255]);
+
+		ctx.putImageData(imageData,0,0);
+	}
+	//拿到指定单像素的rgba值
+	function getPx(imageData,x,y){
+		var color = [];
+		var w = oTxt.width;
+		var h = oTxt.height;
+		//r
+		color[0]=imageData.data[(y*w+x)*4];
+		//g
+		color[1]=imageData.data[(y*w+x)*4+1];
+		//b
+		color[2]=imageData.data[(y*w+x)*4+2];
+		//a
+		color[3]=imageData.data[(y*w+x)*4+3];
+
+		return color;
+	}
+	function setPx(imageData,x,y,color){
+		var data = imageData.data;
+		var w = oTxt.width;
+		var h = oTxt.height;
+		data[(y*w+x)*4]=color[0];
+		data[(y*w+x)*4+1]=color[1];
+		data[(y*w+x)*4+2]=color[2];
+		data[(y*w+x)*4+3]=color[3];
+	}
+</script>
+</html>

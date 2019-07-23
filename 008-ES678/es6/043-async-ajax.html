@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>043-async-ajax.html</title>
+</head>
+<body>
+	
+</body>
+<script src="../js/jquery-1.12.4.js"></script>
+<script>
+	const getAjaxPromise = (url,type='get',data='')=>new Promise((resolve,reject)=>{
+		$.ajax({
+			url:url,
+			type:type,
+			data:data,
+			dataType:'json'
+		})
+		.done(function(data){
+			resolve(data)
+		})
+		.fail(function(){
+			reject('err')
+		})
+	})
+
+	async function getGitgubData(url){
+		const data1 = await getAjaxPromise(url);
+		console.log(data1);
+		const data2 = await getAjaxPromise(data1.followers_url);
+		console.log(data2);
+		const data3 = await getAjaxPromise(data2[0].followers_url);
+		console.log(data3);
+		return data3
+	}
+	//调用ansyc会返回一个promise对象
+	getGitgubData('https://api.github.com/users/kuazhu')
+	.then(data=>{
+		console.log(data);
+	})
+</script>
+</html>
