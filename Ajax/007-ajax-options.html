@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-ajax-options.html</title>
+</head>
+<body>
+	<button>请求数据</button>
+</body>
+<script>
+	const oBtn = document.querySelector('button');
+
+	function ajax(method,url,data,success,error){
+		//1.生成一个ajax对象
+		const oAjax = new XMLHttpRequest();
+		if(method.toUpperCase() == "POST"){
+			// console.log(oAjax);
+			//2.建立连接，请求链接，地址,是否异步
+			// oAjax.open("GET","http://127.0.0.1:3000/?name=tom",true);
+			oAjax.open(method,url,true);
+
+			//请求头信息
+			oAjax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+			//3.发送数据
+			oAjax.send(data);
+		}else if(method.toUpperCase() == "GET"){
+			if(data){
+				var url = url + "?" +data;
+			}
+			// console.log(oAjax);
+			//2.建立连接，请求链接，地址,是否异步
+			// oAjax.open("GET","http://127.0.0.1:3000/?name=tom",true);
+			oAjax.open(method,url,true);
+
+			//请求头信息
+			oAjax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+			//3.发送数据
+			oAjax.send();
+		}else{
+			oAjax.open(method,url,true);
+			oAjax.send();
+		}
+		
+		//4.接收服务器返回的数据
+		oAjax.onreadystatechange = function(){
+			// console.log(oAjax.readyState);
+			//4--数据完全返回(路径错误也会返回状态码4)
+			if(oAjax.readyState == 4){
+				//获取响应头信息
+				// oAjax.getResponseHeader("Data");
+				console.log(oAjax.getResponseHeader("Content-Type"));
+				if(oAjax.status == 200){//数据完全返回并正确
+					try{
+						// console.log(oAjax.responseText);
+						const strToObj = JSON.parse(oAjax.responseText);
+						// console.log(strToObj);
+						typeof success == 'function' && success(strToObj);
+					}catch(e){
+						console.log(e);
+					}
+				}else{
+					typeof error == 'function' && error(oAjax.status);
+				}
+			}
+		}
+		//不允许跨域是报错提示
+		oAjax.onerror = function(){
+			console.log("on error...");
+		}
+	}
+
+	oBtn.onclick = function(){
+		/*
+		ajax("post","http://127.0.0.1:3000",'{"name":"tom"}',(data)=>{console.log(data);(err)=>{
+			console.log("fauiled");
+		}});
+		
+		ajax("get","http://127.0.0.1:3000",'name=tom',(data)=>{console.log(data);(err)=>{
+			console.log("fauiled");
+		}});
+		*/
+		//put更新数据
+		ajax("PUT","http://127.0.0.1:3001/edit",'',(data)=>{console.log(data);(err)=>{
+			console.log("fauiled");
+		}});
+	}	
+</script>
+</html>

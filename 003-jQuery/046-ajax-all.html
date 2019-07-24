@@ -12,13 +12,15 @@
 <script src="js/jquery-1.12.4.js"></script>
 <script>
 	$(function(){
+		//默认返回数据是text
+		//携带参数不再返回数据文件,返回参数信息
 		$('button').eq(0).click(function(){
 			$.get('044-data.json',{name:'leo',age:22},function(data){
 				console.log(data);
 			},'json')
 		});
 		$('button').eq(1).click(function(){
-			$.post('044-data.json',{name:'leo',age:22},function(data){
+			$.post('044-data.json',{name:"leo","age":22},function(data){
 				console.log(data);
 			},'text')
 		});

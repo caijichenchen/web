@@ -1,3 +1,3 @@
-{
-	"age":"20"
+module.exports={
+	text:'data'
 }

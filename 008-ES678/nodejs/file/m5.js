@@ -27,6 +27,7 @@ exports = {
 	obj
 }
 */
+console.log('in m5 ...');
 module.exports = {
 	str,
 	fn,

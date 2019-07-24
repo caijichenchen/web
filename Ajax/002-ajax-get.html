@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>get.html</title>
+</head>
+<body>
+	<button>请求数据</button>
+</body>
+<script>
+	const oBtn = document.querySelector('button');
+
+	oBtn.onclick = function(){
+		//1.生成一个ajax对象
+		const oAjax = new XMLHttpRequest();
+		// console.log(oAjax);
+		//2.建立连接，请求链接，地址,是否异步
+		oAjax.open("GET","http://127.0.0.1:3000/002.data.json",true);
+
+		//请求头信息
+		oAjax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+		//3.发送数据
+		oAjax.send();
+		//4.接收服务器返回的数据
+		oAjax.onreadystatechange = function(){
+			// console.log(oAjax.readyState);
+			//4--数据完全返回(路径错误也会返回状态码4)
+			if(oAjax.readyState == 4){
+				if(oAjax.status == 200){//数据完全返回并正确
+					// console.log(oAjax.responseText);
+					const strToObj = JSON.parse(oAjax.responseText);
+					console.log(strToObj);
+				}
+			}
+		}
+	}	
+</script>
+</html>

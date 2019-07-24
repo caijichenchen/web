@@ -2,29 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>001-ajax.html</title>
+	<title>Document</title>
 </head>
 <body>
-	<button id="btn">发送请求</button>
+	<p>hhhh</p>
 </body>
-<script>
-	var oBtn = document.getElementById('btn');
-	oBtn.onclick = function(){
-		//1.创建一个XMLHttpRequest对象
-		var oAjax = new XMLHttpRequest();
-		//2.准备发送请求
-		oAjax.open('GET',' http://127.0.0.1:3000/',true);
-		//3.发送请求
-		oAjax.send();
-		//4.服务器接受响应
-		oAjax.onreadystatechange = function(){
-			if(oAjax.readyState == 4){
-				if(oAjax.status == 200){
-					var str = JSON.parse(oAjax.responseText);
-					console.log(str.name)
-				}
-			}
-		}
-	}
-</script>
 </html>
