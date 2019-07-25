@@ -10,9 +10,11 @@ const server = http.createServer((req, res) => {
 	//拿到请求的方法
 	// console.log(req.method);
 	//设置简单跨域请求
-	res.setHeader("Access-Control-Allow-Origin","http://127.0.0.1:3000");
+	// res.setHeader("Access-Control-Allow-Origin","http://127.0.0.1:3000");
 	//设置所有端口允许请求
-	// res.setHeader("Access-Control-Allow-Origin","*");
+	res.setHeader("Access-Control-Allow-Origin","*");
+	//允许请求的方法
+	res.setHeader("Access-Control-Allow-Methods","PUT");
 	//设置响应头
 	res.setHeader("Content-Type","text/plain");
 	//自定义响应头
