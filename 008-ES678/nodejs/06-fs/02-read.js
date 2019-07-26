@@ -48,6 +48,7 @@ fs.readFile('./01.txt',{flag:'r',encoding:'utf8'},(err,data)=>{
 */
 
 const readFile = util.promisify(fs.readFile);
+//flag读取方式 encoding是在后台解析语言方式
 readFile('./01.txt',{flag:'r',encoding:'utf8'})
 .then(data=>{
 	console.log(data.toString());
