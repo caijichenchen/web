@@ -37,13 +37,15 @@ const UserSchema = new mongoose.Schema({
 		type:Array
 	}
 })
-/*
+
 UserSchema.methods.findBlogs = function(callback){
 	// console.log(this._id);
 	console.log(this.model('blog'));
-	this.model('blog').find({author:_id},callback);
+	this.model('blog').find({author:this._id},callback);
 }
-*/
+UserSchema.statics.findByPhone = function(id,cb){
+	this.findOne({phone:id},cb);
+}
 //2.根据Schema定义数据模型
 //2.1 model方法第一个参数指定集合名称,mongoose会默认转换为复数
 //2.2 model方法第二个参数指定Schema

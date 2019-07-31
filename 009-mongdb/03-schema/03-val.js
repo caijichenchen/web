@@ -41,7 +41,7 @@ db.once('open',()=>{
 		console.log(err.message);
 	})
 	*/
-	
+	/*
 	Kittens.insertMany({
 		name:"leo",
 		age:'19',
@@ -54,16 +54,17 @@ db.once('open',()=>{
 	.catch(err=>{
 		console.log(err.message);
 	})
+	*/
 	//3.使用模型
 	/*
 	blogs.insertMany([{
-		title:'best blog',
+		title:'best blog1',
 		content:'this is a best blog',
-		author:"5d40f56ae11fa63464cda9ba"
+		author:"5d413f427494a94a68a5698c"
 	},{
 		title:'best blog2',
 		content:'this is a best blog2',
-		author:"5d40f56ae11fa63464cda9bb"
+		author:"5d413f427494a94a68a5698c"
 	}],(err,doc)=>{
 		if(!err){
 			console.log(doc);
@@ -71,7 +72,6 @@ db.once('open',()=>{
 	})
 	*/
 	//根据姓名找到第一个用户的所有文章
-	/*
 	Kittens.findOne({name:"leo"},(err,doc)=>{
 		if(!err){
 			// console.log(doc);
@@ -80,12 +80,14 @@ db.once('open',()=>{
 			// 		console.log(result);
 			// 	}
 			// })
+			
 			doc.findBlogs((err,result)=>{
 				if(!err){
 					console.log(result);
 				}
 			})
+			
 		}
 	})
-	*/
+	
 })
