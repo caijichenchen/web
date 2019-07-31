@@ -5,7 +5,7 @@ const util = require('util');
 
 ///1.1.1打开文件
 /*
-const fd = fs.openSync('./01.txt','w');//w-->write  a-->追加append
+const fd = fs.openSync('./01.txt','w');//w-->write  a-->追加append 会有一个返回值
 // console.log(fd);
 //1.1.2写入文件
 fs.writeSync(fd,'hello');

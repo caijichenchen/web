@@ -16,15 +16,7 @@
 					//失败情况弹出失败消息
 					// console.log(result);
 					console.log(result.data.task);
-
 					if(result.code == 0){
-						/*
-						const task = result.data.task;
-						const newLi = document.createElement('li');
-						newLi.innerHTML = task;
-						newLi.classList.add('todo-item');
-						$ul.append(newLi);
-						*/
 						const data = result.data;
 						const $li = `<li class="todo-item" data-id="${data.id}">${data.task}</li>`;
 						$ul.append($li);
