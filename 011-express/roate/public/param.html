@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>express</title>
+</head>
+<body>
+	<h1>Express</h1>
+	<button id="get1">send get param</button>
+	<button id="get2">send get query</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//get
+		$('#get1').on('click',function(){
+			$.ajax({
+				url:"/users/34/books/8989",
+				type:"get",	
+				success:function(result){
+					console.log(result);
+				}
+			})
+		})
+		//post
+		$('#get2').on('click',function(){
+			$.ajax({
+				url:"/?userId=123&bookId=999",
+				type:"get",
+				success:function(result){
+					console.log(result);
+				}
+			})
+		})
+	})
+</script>
+</html>

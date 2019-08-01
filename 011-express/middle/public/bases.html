@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>express</title>
+</head>
+<body>
+	<h1>Express</h1>
+	<button id="post"> post</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//post
+		$('#post').on('click',function(){
+			$.ajax({
+				url:"/",
+				type:"post",
+				data:{
+					name:"tom",
+					password:123
+				},
+				success:function(result){
+					console.log(result);
+				}
+			})
+		})
+	})
+</script>
+</html>

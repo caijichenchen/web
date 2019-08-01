@@ -13,7 +13,7 @@ const BlogSchema = new mongoose.Schema({
 		ref:'user'
 	}
 })
-BlogSchema.statics.findBlogs = function(val,cb){
+BlogSchema.statics.findBlogs = function(val){
 	return this.findOne(val)
 	.populate('author')
 }

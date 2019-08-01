@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>express</title>
+</head>
+<body>
+	<h1>Express</h1>
+	<button id="get">send get</button>
+	<button id="post">send post</button>
+	<button id="put">send put</button>
+	<button id="delete">send delete</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//get
+		$('#get').on('click',function(){
+			$.ajax({
+				url:"/users",
+				type:"get",	
+				success:function(result){
+					console.log(result);
+				}
+			})
+		})
+		//post
+		$('#post').on('click',function(){
+			$.ajax({
+				url:"/users",
+				type:"post",
+				success:function(result){
+					console.log(result);
+				}
+			})
+		})
+		//put
+		$('#put').on('click',function(){
+			$.ajax({
+				url:"/users",
+				type:"put",
+				success:function(result){
+					console.log(result);
+				}
+			})
+		})
+		//delete
+		$('#delete').on('click',function(){
+			$.ajax({
+				url:"/users",
+				type:"delete",
+				success:function(result){
+					console.log(result);
+				}
+			})
+		})
+	})
+</script>
+</html>

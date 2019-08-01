@@ -28,17 +28,27 @@ db.once('open',()=>{
 	
 	//3.使用模型
 	/*
-	blogs.findOne({title:"best blog1"},(err,result)=>{
+	blogs.findOne({title:"best blog1"},(err,blog)=>{
 		if(!err){
 			const result = {};
-			result.
+			result.blog = blog;
+			Kittens.findOne(result.author,(err,doc)=>{
+				if(!err){
+					result.user = doc;
+					console.log(result);
+				}
+			})
 		}
 	})
 	
-	blogs.findOne({title:""})
-	.populate('author')
+	blogs.findOne({title:"best blog1"})
+	.populate('author',"name -_id")
 	.then(data=>{
 		console.log(data);
 	})
 	*/
+	blogs.findBlogs({title:"best blog1"})
+	.then(data=>{
+		console.log(data);
+	})
 })
