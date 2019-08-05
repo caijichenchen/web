@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01-hello world</title>
+</head>
+<body>
+  <div class="box">
+    <input type="text" v-model="username">
+    <p>Hello : {{username}}</p>
+  </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+  const vm = new Vue({//配置对象
+    el:'.box',//element,选择器,vue管理的一个区域
+    data:{//数据
+      username:"atguigu"
+    }
+  })
+  /*MVVM
+  model:模型,数据对象
+  view:视图,模板页面
+  viewModel:视图模型 vue的整个实例
+  */
+</script>
+</html>

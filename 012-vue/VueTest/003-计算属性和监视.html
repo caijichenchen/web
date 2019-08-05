@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-计算属性和监视.html</title>
+</head>
+<body>
+	<div id="demo">
+	  姓: <input type="text" placeholder="First Name" v-model="firstName"><br>
+	  名: <input type="text" placeholder="Last Name" v-model="lastName"><br>
+	  <!--fullName1是根据fistName和lastName计算产生-->
+	  姓名1(单向): <input type="text" placeholder="Full Name1" v-model="fullName1"><br>
+	  姓名2(单向): <input type="text" placeholder="Full Name2" v-model="fullName2"><br>
+	  姓名3(双向): <input type="text" placeholder="Full Name3" v-model="fullName3"><br>
+
+	  <p>{{fullName1}}</p>
+	  <p>{{fullName1}}</p>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	new Vue({
+		el:"#demo",
+		data:{
+			firstName:
+		}
+	})
+</script>
+</html>

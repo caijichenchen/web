@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>{{ title }}</title>
 </head>
 <body>
-	
+	<h1>{{name}}</h1>
+	<p>{{obj.name}}</p>
+
+	{% if name === 'tom' %}
+	<p>hhh</p>
+	{% endif %}
+
+	{% if name === 'tom' %}
+	  	<p>hello Tom</p>
+	{% elseif name === 'Leo' %}
+		<p>hello Leo</p>
+	{% else %}
+	 	<p>hello guy</p>
+	{% endif %}
+
+	<ul>
+		{% for key,val in arr %}
+		<li>{{key}} : {{val}}</li>
+		{% endfor %}
+	</ul>
 </body>
 </html>

@@ -15,10 +15,20 @@ app.set('view engine','html');
 
 app.get('/',(req,res)=>{
 	res.render('indexs',{
-		
+		title:'跨猪网',
+        content:'我是内容',
+        name:"tom",
+        obj:{
+        	name:"leo"
+        },
+        arr:[18,22,41,62,85]
 	})
 })
 
-app.get('/', (req, res) => res.send('get response data!'));
+app.get('/base', (req, res) =>{
+	res.render('base',{
+
+	})
+});
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
