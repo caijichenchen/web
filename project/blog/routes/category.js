@@ -48,7 +48,8 @@ router.get('/add',(req,res)=>{
 })
 //处理添加分类
 router.post('/add',(req,res)=>{
-	const { name,order } = req.body;
+	let { name,order } = req.body;
+	// console.log(order);
 	if(!order){
 		order = 0;
 	}

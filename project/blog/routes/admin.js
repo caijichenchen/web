@@ -1,10 +1,11 @@
 //查找页面
 const express = require('express');
 const UserModel = require('../models/user.js');
+const CommentModel = require('../models/comment.js');
 const Category = require('../util/pagination.js');
+const hmac = require('../util/hmac.js');
 const router = express.Router();
 //权限验证
-
 router.use((req,res,next)=>{
 	if(req.userInfo.isAdmin){
 		next()
@@ -98,5 +99,67 @@ router.get('/users',(req,res)=>{
 		})
 	})
 	*/
+})
+
+//显示后台评论列表
+router.get('/comments', (req, res) => {
+    CommentModel.getPaginationCommentData(req)
+    .then(data=>{
+        res.render("admin/comment_list",{
+            userInfo:req.userInfo,
+            comments:data.docs,
+            page:data.page,
+            list:data.list,
+            pages:data.pages,
+            url:"/admin/comments"
+        }) 
+    })
+    .catch(err=>{
+        console.log('get comments err:',err)
+    })    
+})
+
+//处理删除操作
+router.get('/comment/delete/:id', (req, res) => {
+    const { id } = req.params
+    CommentModel.deleteOne({_id:id})
+    .then(result=>{
+        res.render("admin/success",{
+            message:"删除评论成功",
+            url:'/admin/comments'
+        })
+    })
+    .catch(err=>{
+        res.render("admin/err",{
+            message:"数据库操作失败",
+            url:'/admin/comments'
+        })
+    })    
+})
+//显示修改密码页面
+router.get('/password',(req,res)=>{
+    res.render("admin/password",{
+        userInfo:req.userInfo
+    })
+})
+//处理修改密码
+router.post('/password',(req,res)=>{
+    const { password } = req.body
+    UserModel.updateOne({_id:req.userInfo._id},{password:hmac(password)})
+    .then(result=>{
+        req.session.destroy()
+        res.render("admin/success",{
+            userInfo:req.userInfo,
+            message:"修改密码成功,请重新登录",
+            url:'/'
+        })
+    })
+    .catch(err=>{
+        res.render("admin/err",{
+            userInfo:req.userInfo,
+            message:"修改密码失败",
+            url:'/admin/password'
+        })
+    })
 })
 module.exports = router;

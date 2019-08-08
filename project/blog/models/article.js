@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Category = require('../util/pagination.js');
 
 const ArticleSchema = new mongoose.Schema({
 	title:{
@@ -8,11 +9,11 @@ const ArticleSchema = new mongoose.Schema({
     intro:{
         type:String,
     },
-    user:{
+    user:{//作者
         type:mongoose.Schema.Types.ObjectId,
-        ref:'user'
+        ref:'blog'
     },
-    category:{
+    category:{//分类
         type:mongoose.Schema.Types.ObjectId,
         ref:'category'        
     },
@@ -28,6 +29,23 @@ const ArticleSchema = new mongoose.Schema({
         type:String
     }
 })
+
+ArticleSchema.statics.getPaginationArticleData = function(req,query){
+    let page = req.query.page;
+    const options = {
+        page:page,
+        method:this,
+        query:query,
+        sort:{_id:-1},
+        populates:[{path:'user',select:'username'},{path:'category',select:'name'}]
+    }
+    return Category(options)
+}
+
+ArticleSchema.virtual('createdTime').get(function(){
+    return new Date(this.createdAt).toLocaleString();
+})
+
 const ArticleModel = mongoose.model('article',ArticleSchema);
 
 module.exports = ArticleModel;

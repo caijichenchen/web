@@ -7,8 +7,8 @@
   <title>
     {% block title %}{% endblock %}
   </title>
-  <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/common.css">
   {% block head %}{% endblock %}
   <!-- <link rel="stylesheet" href="css/index.css"> -->
 </head>
@@ -23,16 +23,24 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand link" href="#">我的个人博客</a>
+        <a class="navbar-brand link" href="/">我的个人博客</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="index.html">首页<span class="sr-only">(current)</span></a></li>
-          <li><a href="list.html">HTML/CSS</a></li>
-          <li><a href="list.html">JavaScript</a></li>
-          <li><a href="list.html">学无止境</a></li>
-          <li><a href="list.html">我的足迹</a></li>
+          {% if currentCategoryId %}
+          <li><a href="/">首页<span class="sr-only">(current)</span></a></li>
+          {% else %}
+          <li class="active"><a href="/">首页<span class="sr-only">(current)</span></a></li>
+          {% endif %}
+          {% for category in categories %}
+          {% if currentCategoryId == category._id.toString() %}
+          <!-- 根据分类的id进去相应的信息页面 -->
+          <li class="active"><a href="/list/{{ category._id.toString() }}">{{ category.name }}</a></li>
+          {% else %}
+          <li><a href="/list/{{ category._id.toString() }}">{{ category.name }}</a></li>
+          {% endif %}
+          {% endfor %}
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
@@ -124,12 +132,12 @@
           {% endif %}
           <div class="ad">
             <a href="#" class="thumbnail">
-              <img src="img/ad/ad1.jpg" alt="广告1">
+              <img src="/img/ad/ad1.jpg" alt="广告1">
             </a>
           </div>
           <div class="ad">
             <a href="#" class="thumbnail">
-              <img src="img/ad/ad2.jpg" alt="广告2">
+              <img src="/img/ad/ad2.jpg" alt="广告2">
             </a>
           </div>
           <div class="panel panel-default custom-panel">
@@ -140,12 +148,12 @@
               <div class="media">
                 <div class="media-left">
                   <a href="#">
-                    <img class="media-object img-me img-circle" src="img/me.jpg" alt="博主帅照">
+                    <img class="media-object img-me img-circle" src="/img/me.jpg" alt="博主帅照">
                   </a>
                 </div>
                 <div class="media-body">
                   <h4 class="media-heading">菜鸡陈</h4>
-                  80后草根！07年入行。一直潜心研究web技术，一边工作一边积累经验，分享一些个人心得。
+                  90后帅比！19年入行。一直潜心研究web技术，一边学习一边积累经验，分享一些个人心得。
                 </div>
               </div>
             </div>
@@ -156,14 +164,9 @@
             </div>
             <div class="panel-body">
               <ul class="list-group">
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>                                                 
+                {% for article in Articles %}
+                <li class="list-group-item"><a href="/detail/{{ article._id.toString() }}" class="link text-ellipsis" target="_blank">{{ article.click }}&nbsp;{{ article.title }}</a></li>
+                {% endfor %}                                              
               </ul>     
             </div>
           </div>
@@ -172,7 +175,7 @@
               <h3 class="panel-title">关注我</h3>
             </div>
             <div class="panel-body">
-              <img src="img/wechat.jpg" class="img-responsive" alt="">
+              <img src="/img/wechat.jpg" class="img-responsive" alt="">
             </div>
           </div>                                         
         </div>
@@ -184,11 +187,12 @@
   </footer>
 
 
-<script src="js/jquery-1.12.4.min.js"></script> 
-<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="/js/jquery-1.12.4.min.js"></script> 
+<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
  {% block footer %}{% endblock %}
 <!-- <script src="js/index.js"></script> -->
-<script src="js/common.js"></script>
+<script src="/js/pagination.js"></script>
+<script src="/js/common.js"></script>
 </body>
 
 </html>

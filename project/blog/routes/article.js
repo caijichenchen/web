@@ -22,15 +22,9 @@ router.get('/',(req,res)=>{
 	// res.render('admin/category_list',{
 	// 	userInfo:req.userInfo
 	// });
-	let page = req.query.page;
-	const options = {
-		page:page,
-		method:ArticleMdoel,
-		query:{},
-		sort:{order:-1}
-	}
-	Category(options)
+	ArticleMdoel.getPaginationArticleData(req)
 	.then(data=>{
+		// console.log(data);
 		res.render('admin/article_list',{
 			userInfo:req.userInfo,
 			articles:data.docs,
@@ -57,8 +51,7 @@ router.get('/add',(req,res)=>{
 })
 //处理添加文章
 router.post('/add',(req,res)=>{
-	const { title,category,intro,content } = req.body
-    
+	const { title,category,intro,content } = req.body;
     ArticleMdoel.insertMany({
         title,
         category,
@@ -69,6 +62,7 @@ router.post('/add',(req,res)=>{
     .then(articles=>{
         res.render("admin/success",{
             message:"新增文章成功",
+            url:'/article'
         })
     })
     .catch(err=>{
@@ -78,17 +72,22 @@ router.post('/add',(req,res)=>{
         })
     })
 })
-//编辑分类页面
+//编辑文章页面
 router.get('/edit/:id',(req,res)=>{
 	const { id } = req.params;
 	console.log("id1",id);
-	ArticleMdoel.findById(id)
-	.then(category=>{
-		res.render("admin/category_edit",{
-			userInfo:req.userInfo,
-			category:category
+	CategoryMdoel.find({},"name")
+    .sort({order:-1})
+    .then(categories=>{
+    	ArticleMdoel.findById(id)
+		.then(article=>{
+			res.render("admin/article_edit",{
+				userInfo:req.userInfo,
+				article,
+				categories
+			})
 		})
-	})
+    })
 	.catch(err=>{
 		res.render("admin/err",{
 			message:"操作失败"
@@ -97,39 +96,16 @@ router.get('/edit/:id',(req,res)=>{
 })
 //处理编辑
 router.post('/edit',(req,res)=>{
-	let { name,order,id } = req.body;
-	if(!order){
-		order = 0;
-	}
-	ArticleMdoel.findById(id)
-	.then(category=>{
-		if(category.name == name && category.order == order){
-			res.render("admin/err",{
-				message:"请更新后再提交"
-			})
-		}else{
-			ArticleMdoel.findOne({name:name,_id:{$ne:id}})
-			.then(category=>{
-				if(category){
-					res.render("admin/err",{
-						message:"分类已经存在"
-					})
-				}else{
-					ArticleMdoel.updateOne({_id:id},{name,order})
-					.then(result=>{
-						res.render("admin/success",{
-							message:"更改分类成功"
-						})
-					})
-					.catch(err=>{
-						console.log(err);
-					})
-				}
-			})
-			.catch(err=>{
-				console.log(err);
-			})
-		}
+	let { title,category,intro,content,id } = req.body;
+	ArticleMdoel.updateOne({_id:id},{title,category,intro,content})
+	.then(result=>{
+		res.render("admin/success",{
+			message:"更改文章成功",
+			url:'/article'
+		})
+	})
+	.catch(err=>{
+		console.log(err);
 	})
 })
 //删除分类
@@ -140,7 +116,7 @@ router.get('/del/:id',(req,res)=>{
 	.then(result=>{
 		res.render("admin/success",{
 			message:"删除分类成功",
-			url:'/category'
+			url:'/article'
 		})
 	})
 	.catch(err=>{
@@ -149,7 +125,7 @@ router.get('/del/:id',(req,res)=>{
 		})
 	})
 })
-//文章上传接口
+//图片上传接口
 router.post('/uploadImage',upload.single('upload'),(req,res)=>{
 	const uploadedFilePath = '/uploads/'+req.file.filename;
 	res.json({

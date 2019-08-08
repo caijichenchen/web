@@ -9,7 +9,7 @@ const app = express();
 
 //1.连接数据库
 mongoose.connect('mongodb://localhost/kuazhu',{useNewUrlParser:true});
-
+mongoose.set('useFindAndModify',false);
 //2.获取对象
 const db = mongoose.connection;
 //3.连接数据库失败
@@ -77,5 +77,7 @@ app.use('/admin',require('./routes/admin.js'));
 app.use('/category',require('./routes/category.js'));
 app.use('/article',require('./routes/article.js'));
 app.use('/user',require('./routes/user.js'));
+app.use('/home',require('./routes/home.js'));
+app.use('/comment',require('./routes/comment.js'));
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
