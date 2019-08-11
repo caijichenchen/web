@@ -68,9 +68,7 @@ app.use((req,res,next)=>{
 	req.userInfo = req.session.userInfo || {};
 	next()
 })
-
-
-
+	
 //路由处理
 app.use('/',require('./routes/index.js'));
 app.use('/admin',require('./routes/admin.js'));

@@ -51,7 +51,6 @@
 				}
 			})
 			.done(function(result){
-				// console.log(result);
 				if(result.status == 200){
 					$('#go-login').trigger('click');
 				}else{
