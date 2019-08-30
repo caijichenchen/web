@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>034-组件-实名插槽.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app1">
+		<layout>
+			<div slot="focus">焦点区域</div>
+			<div slot="content">主要内容</div>
+		</layout>
+	</div>
+	<template id="layout">
+		<div>
+			<nav>顶部导航</nav>
+			<slot name="focus">xxx</slot>	
+			<slot name="content">zzz</slot>	
+			<footer>底部</footer>
+		</div>
+	</template>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	Vue.component('layout', {
+	  template: '#layout',
+	})
+	let vm1 = new Vue({
+		el:'#app1',
+		data:{  
+		}
+	})
+</script>
+</html>

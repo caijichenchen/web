@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-事件监听.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			height: 20px;
+			width: 100%;
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<button v-on:click="count++">我被点击了{{count}}次</button>
+			<button @click="count++">我被点击了{{count}}次</button>
+			<button @click="clicks">我被点击了{{count}}次</button>
+			<button @click="say('hello')">我被点击了{{count}}次</button>
+		</ul>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	let vm = new Vue({
+		el:'#app',
+		data:{  
+			count:0
+		},
+		methods:{
+			clicks(){
+				this.count++
+			},
+			say(msg){
+				console.log(this);
+				alert(msg)
+			}
+		}
+	})
+</script>
+</html>

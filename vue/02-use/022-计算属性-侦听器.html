@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022-计算属性-侦听器.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- <p>{{first}}</p> -->
+		<!-- <p>{{last}}</p> -->
+		<input type="text" v-model="fullChange">
+		<p>{{getAll()}}</p>
+		<p>{{fullChange}}</p>
+		<p>{{fullChange}}</p>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	let vm = new Vue({
+		el:'#app',
+		data:{  
+			first:'chen',
+			last:'tom'
+		},
+		methods:{
+			getAll(){
+				return this.first + this.last
+			}
+		},
+		computed:{
+			fullChange:{
+				get(){
+					return this.first + "," + this.last
+				},
+				set(newValue){
+					var valArr = newValue.split(",")
+					console.log(valArr);
+					this.first = valArr[0]
+					this.last = valArr[valArr.length - 1]
+				}
+			}
+		},
+		watch:{
+			fullChange(){
+				console.log("111");
+			}
+		}
+	})
+	vm.$watch("fullChange",function(){
+		console.log("222");
+	})
+</script>
+</html>

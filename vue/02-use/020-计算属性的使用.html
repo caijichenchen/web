@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>020-计算属性的使用.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- <p>{{first}}</p> -->
+		<!-- <p>{{last}}</p> -->
+		<input type="text" v-model="first">
+		<input type="text" v-model="last">
+		<p>{{getAll()}}</p>
+		<p>{{fullAll}}</p>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	let vm = new Vue({
+		el:'#app',
+		data:{  
+			first:'chen',
+			last:'tom'
+		},
+		methods:{
+			getAll(){
+				return this.first + this.last
+			}
+		},
+		computed:{
+			fullAll(){
+				return this.first+this.last
+			}
+		}
+	})
+</script>
+</html>

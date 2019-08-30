@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-样式绑定.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			height: 20px;
+			width: 100%;
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li>我是li</li>
+			<li :style="{backgroundColor:bg,color:clr}">我是li</li>
+			<li :style="[{backgroundColor:bg},{color:clr}]">我是li</li>
+			<li :style="objStyle">我是li</li>
+			<li :style="arrStyle">我是li</li>
+		</ul>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	let vm = new Vue({
+		el:'#app',
+		data:{  
+			bg:'red',
+			clr:'blue',
+			objStyle:{
+				backgroundColor:'#f69',
+				color:'#ccc'
+			},
+			arrStyle:[{backgroundColor:'#f69'},{color:'#ccc'}]
+		}
+	})
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032-事件-自定义事件.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app1">
+		<button-counter @add-click-event="getClicks()"></button-counter>
+		<button-counter @add-click-event="getClicks()"></button-counter>
+		<button-counter @add-click-event="getClicks()"></button-counter>
+		<p>共被点击了次{{allClick}}</p>
+	</div>
+	<template id="button-counter">
+		<button @click="addCount()">你点击了 {{ count }} 次.</button>
+	</template>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	Vue.component('button-counter', {
+	  data: function () {
+	    return {
+	      count: 0
+	    }
+	  },
+	  template: '#button-counter',
+	  methods:{
+	  	addCount(){
+	  		this.count++
+	  		this.$emit('add-click-event')
+	  	}
+	  }
+	})
+	let vm1 = new Vue({
+		el:'#app1',
+		data:{  
+			allClick:0
+		},
+		methods:{
+			getClicks(){
+				this.allClick++
+			}
+		}
+	})
+</script>
+</html>

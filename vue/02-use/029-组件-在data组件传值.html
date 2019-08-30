@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>029-组件-在data组件传值.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app1">
+		<!-- <todo-item 
+			v-for="task in tasks"
+			:task="task.task"
+			:key="task.id"
+			:index="task.id"
+		></todo-item> -->
+		<todo-item 
+			v-for="(task,index) in tasks"
+			:task="task.task"
+			:key="index"
+			:index="index"
+		></todo-item>
+	</div>
+	<template id="todo-item">
+		<h3>{{index}}--{{task}}</h3>
+	</template>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	//定义
+	var TodoItem = Vue.extend({
+		data: function () {
+		    return {
+		      count: 0
+		    }
+		  },
+		 template: '#todo-item',
+		 // props:['task']
+		 props:{
+		 	task:String,
+		 	index:Number
+		 }
+	})
+	//注册
+	Vue.component('todo-item', TodoItem)
+	let vm1 = new Vue({
+		el:'#app1',
+		data:{  
+			// task:"吃饭"
+			tasks:[
+				{
+					id:0,
+					task:"吃饭"
+				},
+				{
+					id:1,
+					task:"睡觉"
+				}
+			]
+		}
+	})
+</script>
+</html>

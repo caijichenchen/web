@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>026-组件-x-template模板.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app1">
+		<button-counter></button-counter>
+		<button-counter></button-counter>
+		<button-counter></button-counter>
+	</div>
+	<script type="text/x-template " id="button-counter">
+		<button @click="count++">你点击了 {{ count }} 次.</button>
+	</script>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	Vue.component('button-counter', {
+	  data: function () {
+	    return {
+	      count: 0
+	    }
+	  },
+	  template: '#button-counter'
+	})
+	let vm1 = new Vue({
+		el:'#app1',
+		data:{  
+
+		}
+	})
+</script>
+</html>

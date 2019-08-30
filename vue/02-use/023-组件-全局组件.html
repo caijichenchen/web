@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-组件-全局组件.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app1">
+		<button-counter></button-counter>
+		<button-counter></button-counter>
+		<button-counter></button-counter>
+	</div>
+	<div id="app2">
+		<button-counter></button-counter>
+		<button-counter></button-counter>
+		<button-counter></button-counter>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	// 定义一个全局组件
+	Vue.component('button-counter', {
+	  data: function () {
+	    return {
+	      count: 0
+	    }
+	  },
+	  template: '<button @click="count++">你点击了 {{ count }} 次.</button>'
+	})
+	let vm1 = new Vue({
+		el:'#app1',
+		data:{  
+
+		}
+	})
+	let vm2 = new Vue({
+		el:'#app2',
+		data:{  
+
+		}
+	})
+</script>
+</html>

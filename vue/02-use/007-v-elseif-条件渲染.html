@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07-v-elseif-条件渲染.html</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="message">
+		<p >{{message}}</p>
+		<p v-if="message >= 10">优秀</p>
+		<p v-else-if="message > 16">及格</p>
+		<p v-else>不及格</p>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	let vm = new Vue({
+		el:'#app',
+		data:{
+			message:7
+		}
+	})
+</script>
+</html>

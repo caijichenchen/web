@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-v-bind-绑定事件.html</title>
+</head>
+<body>
+	<div id="app">
+		<a v-bind:href="url">百度</a>
+		<a :href="url">百度</a>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	let vm = new Vue({
+		el:'#app',
+		data:{
+			url:"https://www.baidu.com"
+		}
+	})
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-阻止事件默认行为.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.large-box{
+			width: 400px;
+			height: 400px;
+			background-color: blue
+		}
+		.big-box{
+			width: 200px;
+			height: 200px;
+			background-color: #ccc
+		}
+		.small-box{
+			width: 100px;
+			height: 100px;
+			background-color: #fff
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<a :href="url" @click="go($event)">百度</a>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	let vm = new Vue({
+		el:'#app',
+		data:{  
+			url:"https://www.baidu.com"
+		},
+		methods:{
+			go(ev){
+				ev.preventDefault() 
+				console.log("largebox");
+			}
+		}
+	})
+</script>
+</html>
